@@ -477,7 +477,7 @@ https://opencollege-nsk.ru/live/extracurricular/?group=creation
             global bot
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page3")
-            button_2 = telebot.types.InlineKeyboardButton('Перейти в канал', url="https://t.me/pencollege2023")
+            button_2 = telebot.types.InlineKeyboardButton('Перейти в канал', url="https://t.me/opencollege2023")
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             next_menu.add(button_2,button_1, back)
             text = """Для гостей и абитуриентов колледжа мы проводим различные мероприятия: дни открытых дверей, мастер-классы, лекции, школы дополнительного образования, курсы подготовки к экзаменам. Большинство из этих мероприятий являются бесплатными.
