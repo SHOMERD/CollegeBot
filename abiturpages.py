@@ -5,6 +5,7 @@ bot = telebot.TeleBot("6086891510:AAHhYBpEb_as4GwFW6Hw6N_y0yLcXDksW60")
 
 
 class abitur_menu():
+    
     def elif_abitur(call):
 
         def menu_page1(call):
