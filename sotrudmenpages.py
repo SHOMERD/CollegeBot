@@ -85,6 +85,7 @@ class sotrud_menu():
             bot.edit_message_text('Меню для Сотрудника\Преподавателя\nСтраница номер: 3️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         
+        
         # словарь заменяющий длинную цепь if,elif,elif,elif
         Sotrud_page = {'Sotr_page1':menu_page1,
                      'Sotr_page2':menu_page2,

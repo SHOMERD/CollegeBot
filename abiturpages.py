@@ -82,6 +82,7 @@ class abitur_menu():
             bot.edit_message_text('Меню для Абитуриента/Родителя абитуриента\nСтраница номер: 3️⃣ ', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         
+        
         # словарь заменяющий длинную цепь if,elif,elif,elif
         abitur_page = {'Abitur_page1':menu_page1,
                      'Abitur_page2':menu_page2,

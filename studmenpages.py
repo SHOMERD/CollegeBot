@@ -137,6 +137,8 @@ class student_menu():
             # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 5️⃣ ', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
+        
+        
         # словарь заменяющий длинную цепь if,elif,elif,elif
         stud_page = {'Stud_page1':menu_page1,
                      'Stud_page2':menu_page2,
