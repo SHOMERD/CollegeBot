@@ -28,82 +28,11 @@ def menu(call):
         button_abitr = telebot.types.InlineKeyboardButton(text='Абитуриент/Родитель абитуриента', callback_data="Abitur_page1")
         mainmenu.add(button_studRod, button_abitr,button_sotr, )
         bot.edit_message_text("Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?", call.message.chat.id, call.message.message_id, reply_markup=mainmenu)
-    elif call.data == "Stud_page1": # Первая страница меню студента\родителя
-        student_menu.menu_page1(call)
-    elif call.data == "Stud_page2": # вторая страница меню студента\родителя
-        student_menu.menu_page2(call)
-    elif call.data == "Stud_page3": # третья страница студента\родителя
-        student_menu.menu_page3(call)
-    elif call.data == "Stud_page4": # четвертая страница студента\родителя
-        student_menu.menu_page4(call)
-    elif call.data == "Stud_page5": # пятая страница студента\родителя
-        student_menu.menu_page5(call)
+    
+    student_menu.elif_studmenupage(call)
+    abitur_menu.elif_abitur(call)
 
-
-    elif call.data == "Abitur_page1": # Первая страница меню Абитуриентa или Родителя абитуриента
-        abitur_menu.menu_page1(call)
-    elif call.data == "Abitur_page2": # вторая страница меню Абитуриентa или Родителя абитуриента
-        abitur_menu.menu_page2(call)
-    elif call.data == "Abitur_page3": # третья страница меню Абитуриентa или Родителя абитуриента
-        abitur_menu.menu_page3(call)
-
-
-    elif call.data == "spravka": # Получить справку
-        student.first_str_1(call)
-    elif call.data == "otsrochka": # Получить отсрочку
-        student.first_str_2(call)
-    elif call.data == "rasp zanyat": # Расписание занятий
-        student.first_str_3(call)
-    elif call.data == "rasp zvon": # Расписание звонков
-        student.first_str_4(call)
-    elif call.data == "message_admin": # Связаться с администрацией
-        student.first_str_5(call)
-    elif call.data == "oplata": # Оплата
-        student.first_str_6(call)
-    elif call.data == "dolg_money": # Финансовая задолжность
-        student.first_str_7(call)
-    elif call.data == "dolg_not_money": # Узнать долги/пересдать сессию
-        student.first_str_8(call)
-    elif call.data == "distance": # Заочка
-        student.first_str_9(call)
-    elif call.data == "practice": # Практика
-        student.first_str_10(call)
-    elif call.data == "afisha": # Афиша
-        student.first_str_11(call)
-    elif call.data == "clubs": # Клубы
-        student.first_str_12(call)
-    elif call.data == "dop_obrazov1": # Дополнительное образование или второй диплом
-        student.first_str_13(call)
-    elif call.data == "dop_obrazov2": # Дополнительное образование или второй диплом
-        student.first_str_14(call)
-    elif call.data == "study_plans": # Учебные планы
-        student.first_str_15(call)
-    elif call.data == "el_library": # Электронная библиотека
-        student.first_str_16(call)
-    elif call.data == "message_teacher": # Связаться с преподавателем
-        student.first_str_17(call)
-    elif call.data == "el_jur": # ЭлЖур
-        student.first_str_18(call)
-    elif call.data == "transport_card": # Транспортная карта
-        student.first_str_19(call)
-    elif call.data == "employers": # Сотрудники
-        student.first_str_20(call)
-    elif call.data == "psixolog": # Консультация психолога
-        student.first_str_21(call)
-    elif call.data == "self_control": # Самоконтроль
-        student.first_str_22(call)
-    elif call.data == "find_or_lost": # Потерял\нашел вещь
-        student.first_str_23(call)
-    elif call.data == "rules": # Правила внутреннего распорядка
-        student.first_str_24(call)
-    elif call.data == "kpp": # Пропускной режим
-        student.first_str_25(call)
-    elif call.data == "sales": # Скидки и виды поощрений
-        student.first_str_26(call)
-    elif call.data == "different_q": # Другой вопрос
-        student.first_str_27(call)
-    elif call.data == "links": # Ссылки
-        student.first_str_28(call)
+    student.elif_stud(call)
     abitur.abitur_bum(call)    
     
 
