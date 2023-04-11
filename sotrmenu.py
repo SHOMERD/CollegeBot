@@ -644,42 +644,31 @@ YouTube: https://youtube.com/@opencollege54
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)# редактирование сообщения по его id и прикрепление
                                                          # к сообщению меню с кнопками
-        if call.data == "raspis_zanyat": # Расписание занятий
-            return first_str_1(call)
-        elif call.data == "raspis_zvonkov": # Расписание звонков
-            return first_str_2(call)
-        elif call.data == "events": # Мероприятия
-            return first_str_3(call)
-        elif call.data == "dopolnitel_obr": # Дополнительное образование
-            return first_str_4(call)
-        elif call.data == "vedomost": # Получить ведомость
-            return first_str_5(call)
-        elif call.data == "dostupElJur": # Доступ в ЭлЖур
-            return first_str_6(call)
-        elif call.data == "Tech_diff": # Технические сложности
-            return first_str_7(call)
-        elif call.data == "post": # Опубликовать пост
-            return first_str_8(call)
-        elif call.data == "kuratoru": # Куратору групп
-            return first_str_9(call)
-        elif call.data == "plans": # Учебные планы
-            return first_str_10(call)
-        elif call.data == "electr_lib": # Электронная библиотека
-            return first_str_11(call)
-        elif call.data == "message_student": # Связаться со студентом
-            return first_str_12(call)
-        elif call.data == "student_diff": # Сложности со студентами
-            return first_str_13(call)
-        elif call.data == "trud": # Трудоустройство/оплата
-            return first_str_14(call)
-        elif call.data == "propusk": # Пропускной режим
-            return first_str_15(call)
-        elif call.data == "rekvisit": # Реквизиты колледжа
-            return first_str_16(call)
-        elif call.data == "other_question": # Другой вопрос
-            return first_str_17(call)
-        elif call.data == "links_sotr": # Наш сайт и социальные сети
-            return first_str_18(call)
+        
+        sotr_dict = {'raspis_zanyat':first_str_1,
+                      'raspis_zvonkov':first_str_2,
+                      'events':first_str_3,
+                      'dopolnitel_obr':first_str_4,
+                      'vedomost':first_str_5,
+                      'dostupElJur':first_str_6,
+                      'Tech_diff':first_str_7,
+                      'post':first_str_8,
+                      'kuratoru':first_str_9,
+                      'plans':first_str_10,
+                      'electr_lib':first_str_11,
+                      'message_student':first_str_12,
+                      'student_diff':first_str_13,
+                      'trud':first_str_14,
+                      'propusk':first_str_15,
+                      'rekvisit':first_str_16,
+                      'other_question':first_str_17,
+                      'links_sotr':first_str_18,
+                      
+                    } 
+        if call.data in sotr_dict:
+            sotr_dict[call.data](call)
+                                                         
+        
 
 
 
