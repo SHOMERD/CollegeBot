@@ -841,6 +841,7 @@ YouTube: https://youtube.com/@opencollege54
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         
+        # словарь заменяющий длинную цепь if,elif,elif,elif
         dict_1 = {"spravka":first_str_1,
                   "otsrochka":first_str_2,
                   "rasp zanyat":first_str_3,

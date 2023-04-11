@@ -644,7 +644,7 @@ YouTube: https://youtube.com/@opencollege54
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)# редактирование сообщения по его id и прикрепление
                                                          # к сообщению меню с кнопками
-        
+        # словарь заменяющий длинную цепь if,elif,elif,elif
         sotr_dict = {'raspis_zanyat':first_str_1,
                       'raspis_zvonkov':first_str_2,
                       'events':first_str_3,
