@@ -32,12 +32,16 @@ def menu(call):
         bot.edit_message_text("Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?", call.message.chat.id, call.message.message_id, reply_markup=mainmenu)
     
     student_menu.elif_studmenupage(call)
+    
     abitur_menu.elif_abitur(call)
+    
     sotrud_menu.elif_sotrudmenupage(call)
     
     student.elif_stud(call)
+    
     abitur.abitur_bum(call)    
     
+    sotrud.elif_sotr(call)
 
 
 """

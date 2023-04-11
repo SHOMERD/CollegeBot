@@ -5,7 +5,7 @@ bot = telebot.TeleBot("6086891510:AAHhYBpEb_as4GwFW6Hw6N_y0yLcXDksW60")
 
 class sotrud():
     
-    def elif_sotr():
+    def elif_sotr(call):
 
         def first_str_1(call): # Расписание занятий
             
