@@ -8,8 +8,7 @@ import telebot
 
 bot = telebot.TeleBot("6086891510:AAHhYBpEb_as4GwFW6Hw6N_y0yLcXDksW60")
 
-# huy sosi2
-s = ''
+
 @bot.message_handler(commands=['start'])
 def start(message):
     
