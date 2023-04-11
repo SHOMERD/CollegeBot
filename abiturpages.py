@@ -32,7 +32,7 @@ class abitur_menu():
             # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Абитуриента/Родителя абитуриента\nСтраница номер: 1️⃣ ', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu) 
-        def menu_page2(call): # страница меню абитуриента 
+        def menu_page2(call): # страница меню абитуриента 2
             
             # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
             global bot
@@ -57,7 +57,7 @@ class abitur_menu():
             # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Абитуриента/Родителя абитуриента\nСтраница номер: 2️⃣ ', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
-        def menu_page3(call): # страница меню абитуриента 
+        def menu_page3(call): # страница меню абитуриента 3
             
             # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
             global bot

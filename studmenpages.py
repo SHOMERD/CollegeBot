@@ -7,12 +7,15 @@ class student_menu():
     
     def elif_studmenupage(call):
 
-        def menu_page1(call):
+        def menu_page1(call):  # страница меню студента 1
             
+            # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
             global bot
             
+            # определение объекта клавиатуры с кнопками
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
             
+            # определение кнопок для клавиатуры
             button_1 = telebot.types.InlineKeyboardButton('Получить справку', callback_data="spravka")
             button_2 = telebot.types.InlineKeyboardButton('Отсрочка от армии', callback_data="otsrochka")
             button_3 = telebot.types.InlineKeyboardButton('Расписание занятий', callback_data="rasp zanyat")
@@ -23,16 +26,21 @@ class student_menu():
             page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Stud_page2')
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             
+            # добавление кнопок к клавиатуре
             next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6, page_next, back)
            
+            # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Студента/Родителя\nСтраница номер: 1️⃣ ', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)    
-        def menu_page2(call):
+        def menu_page2(call):  # страница меню студента 2
             
+            # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
             global bot
             
+            # определение объекта клавиатуры с кнопками
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         
+            # определение кнопок для клавиатуры
             button_1 = telebot.types.InlineKeyboardButton('Узнать долги/пересдать сессию', callback_data="dolg_not_money")
             button_2 = telebot.types.InlineKeyboardButton('Заочное обучение', callback_data="distance")
             button_3 = telebot.types.InlineKeyboardButton('Практика', callback_data="practice")
@@ -44,15 +52,21 @@ class student_menu():
             page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Stud_page3')
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             
+            # добавление кнопок к клавиатуре
             next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6, page_back,page_next, back)
+            
+            # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 2️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
-        def menu_page3(call):
+        def menu_page3(call):  # страница меню студента 3
             
+            # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
             global bot
             
+            # определение объекта клавиатуры с кнопками
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         
+            # определение кнопок для клавиатуры
             button_1 = telebot.types.InlineKeyboardButton('Второй диплом', callback_data="dop_obrazov2")
             button_2 = telebot.types.InlineKeyboardButton('Учебные планы', callback_data="study_plans")
             button_3 = telebot.types.InlineKeyboardButton('Электронная библиотека', callback_data="el_library")
@@ -64,16 +78,21 @@ class student_menu():
             page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Stud_page4')
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             
+            # добавление кнопок к клавиатуре
             next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6,  page_back,page_next, back)
             
+            # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 3️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
-        def menu_page4(call):
+        def menu_page4(call):  # страница меню студента 4
             
+            # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
             global bot
             
+            # определение объекта клавиатуры с кнопками
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         
+            # определение кнопок для клавиатуры
             button_1 = telebot.types.InlineKeyboardButton('Список сотрудников', callback_data="employers")
             button_2 = telebot.types.InlineKeyboardButton('Консультация психолога', callback_data="psixolog")
             button_3 = telebot.types.InlineKeyboardButton('Самоуправление', callback_data="self_control")
@@ -85,16 +104,21 @@ class student_menu():
             page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Stud_page5')
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             
+            # добавление кнопок к клавиатуре
             next_menu.add(button_1,button_2,button_4, button_3,button_5,button_6, page_back,page_next, back)
             
+            # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 4️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
-        def menu_page5(call):
+        def menu_page5(call):  # страница меню студента 5
             
+            # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
             global bot
             
+            # определение объекта клавиатуры с кнопками
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
             
+            # определение кнопок для клавиатуры
             button_1 = telebot.types.InlineKeyboardButton('Скидки и виды поощрений', callback_data="sales")
             button_2 = telebot.types.InlineKeyboardButton('Другой вопрос', callback_data="different_q")
             button_3 = telebot.types.InlineKeyboardButton('Связаться с администрацией', callback_data="message_admin")
@@ -104,8 +128,10 @@ class student_menu():
             page_1 = telebot.types.InlineKeyboardButton(text='🔄 В начало 🔄', callback_data='Stud_page1')
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             
+            # добавление кнопок к клавиатуре
             next_menu.add(button_1,button_2,button_3,button_4, page_back,page_1, back)
             
+            # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 5️⃣ ', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         # словарь заменяющий длинную цепь if,elif,elif,elif
