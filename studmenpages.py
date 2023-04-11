@@ -107,16 +107,26 @@ class student_menu():
             
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 5️⃣ ', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
-        if call.data == "Stud_page1": # Первая страница меню студента\родителя
-            menu_page1(call)
-        elif call.data == "Stud_page2": # вторая страница меню студента\родителя
-            menu_page2(call)
-        elif call.data == "Stud_page3": # третья страница студента\родителя
-            menu_page3(call)
-        elif call.data == "Stud_page4": # четвертая страница студента\родителя
-            menu_page4(call)
-        elif call.data == "Stud_page5": # пятая страница студента\родителя
-            menu_page5(call)
+        
+        stud_page = {'Stud_page1':menu_page1,
+                     'Stud_page2':menu_page2,
+                     'Stud_page3':menu_page3,
+                     'Stud_page4':menu_page4,
+                     'Stud_page5':menu_page5
+                     }       
+            
+            
+            
+        #if call.data == "Stud_page1": # Первая страница меню студента\родителя
+        #    menu_page1(call)
+        #elif call.data == "Stud_page2": # вторая страница меню студента\родителя
+        #    menu_page2(call)
+        #elif call.data == "Stud_page3": # третья страница студента\родителя
+        #    menu_page3(call)
+        #elif call.data == "Stud_page4": # четвертая страница студента\родителя
+        #    menu_page4(call)
+        #elif call.data == "Stud_page5": # пятая страница студента\родителя
+        #    menu_page5(call)
 
 
 
