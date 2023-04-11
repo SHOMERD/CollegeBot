@@ -4,7 +4,9 @@ import telebot
 bot = telebot.TeleBot("6086891510:AAHhYBpEb_as4GwFW6Hw6N_y0yLcXDksW60")
 
 class abitur():
+    
     def abitur_bum(call):
+        
         def first_str_1(call): # О колледже
             global bot
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
