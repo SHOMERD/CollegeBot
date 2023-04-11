@@ -119,16 +119,7 @@ class student_menu():
             stud_page[call.data](call)
             
             
-        #if call.data == "Stud_page1": # Первая страница меню студента\родителя
-        #    menu_page1(call)
-        #elif call.data == "Stud_page2": # вторая страница меню студента\родителя
-        #    menu_page2(call)
-        #elif call.data == "Stud_page3": # третья страница студента\родителя
-        #    menu_page3(call)
-        #elif call.data == "Stud_page4": # четвертая страница студента\родителя
-        #    menu_page4(call)
-        #elif call.data == "Stud_page5": # пятая страница студента\родителя
-        #    menu_page5(call)
+        
 
 
 

@@ -840,62 +840,41 @@ YouTube: https://youtube.com/@opencollege54
 """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
-        if call.data == "spravka": # Получить справку
-            first_str_1(call)
-        elif call.data == "otsrochka": # Получить отсрочку
-            first_str_2(call)
-        elif call.data == "rasp zanyat": # Расписание занятий
-            first_str_3(call)
-        elif call.data == "rasp zvon": # Расписание звонков
-            first_str_4(call)
-        elif call.data == "message_admin": # Связаться с администрацией
-            first_str_5(call)
-        elif call.data == "oplata": # Оплата
-            first_str_6(call)
-        elif call.data == "dolg_money": # Финансовая задолжность
-            first_str_7(call)
-        elif call.data == "dolg_not_money": # Узнать долги/пересдать сессию
-            first_str_8(call)
-        elif call.data == "distance": # Заочка
-            first_str_9(call)
-        elif call.data == "practice": # Практика
-            first_str_10(call)
-        elif call.data == "afisha": # Афиша
-            first_str_11(call)
-        elif call.data == "clubs": # Клубы
-            first_str_12(call)
-        elif call.data == "dop_obrazov1": # Дополнительное образование или второй диплом
-            first_str_13(call)
-        elif call.data == "dop_obrazov2": # Дополнительное образование или второй диплом
-            first_str_14(call)
-        elif call.data == "study_plans": # Учебные планы
-            first_str_15(call)
-        elif call.data == "el_library": # Электронная библиотека
-            first_str_16(call)
-        elif call.data == "message_teacher": # Связаться с преподавателем
-            first_str_17(call)
-        elif call.data == "el_jur": # ЭлЖур
-            first_str_18(call)
-        elif call.data == "transport_card": # Транспортная карта
-            first_str_19(call)
-        elif call.data == "employers": # Сотрудники
-            first_str_20(call)
-        elif call.data == "psixolog": # Консультация психолога
-            first_str_21(call)
-        elif call.data == "self_control": # Самоконтроль
-            first_str_22(call)
-        elif call.data == "find_or_lost": # Потерял\нашел вещь
-            first_str_23(call)
-        elif call.data == "rules": # Правила внутреннего распорядка
-            first_str_24(call)
-        elif call.data == "kpp": # Пропускной режим
-            first_str_25(call)
-        elif call.data == "sales": # Скидки и виды поощрений
-            first_str_26(call)
-        elif call.data == "different_q": # Другой вопрос
-            first_str_27(call)
-        elif call.data == "links": # Ссылки
-            first_str_28(call)
+        
+        dict_1 = {"spravka":first_str_1,
+                  "otsrochka":first_str_2,
+                  "rasp zanyat":first_str_3,
+                  "rasp zvon":first_str_4,
+                  "message_admin":first_str_5,
+                  "oplata":first_str_6,
+                  "dolg_money":first_str_7,
+                  "dolg_not_money":first_str_8,
+                  "distance":first_str_9,
+                  "practice":first_str_10,
+                  "afisha":first_str_11,
+                  "clubs":first_str_12,
+                  "dop_obrazov1":first_str_13,
+                  "dop_obrazov2":first_str_14,
+                  "study_plans":first_str_15,
+                  "el_library":first_str_16,
+                  "message_teacher":first_str_17,
+                  "el_jur":first_str_18,
+                  "transport_card":first_str_19,
+                  "employers":first_str_20,
+                  "psixolog":first_str_21,
+                  "self_control":first_str_22,
+                  "find_or_lost":first_str_23,
+                  "rules":first_str_24,
+                  "kpp":first_str_25,
+                  "sales":first_str_26,
+                  "different_q":first_str_27,
+                  "links":first_str_28,
+                  }  
+        
+        if call.data in dict_1:
+            dict_1[call.data](call)
+            
+        
 
 
 

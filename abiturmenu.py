@@ -765,62 +765,96 @@ YouTube: https://youtube.com/@opencollege54
 """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)    
-    
-        if call.data == "about": # О колледже
-            return first_str_1(call)
-        elif call.data == "specials": # Специальности
-            return first_str_2(call)
-        elif call.data == "spec1": # Специальность дизайн
-            return first_str_2_1(call)
-        elif call.data == "spec2": # Специальности реклама
-            return first_str_2_2(call)
-        elif call.data == "spec3": # Специальности инф системы и программ
-            return first_str_2_3(call)
-        elif call.data == "spec4": # Специальности юриспруденция
-            return first_str_2_4(call)
-        elif call.data == "spec5": # Специальности правоохран деят
-            return first_str_2_5(call)
-        elif call.data == "spec6": # Специальности операционная деятельность в логистике
-            return first_str_2_6(call)
-        elif call.data == "spec7": # Специальности экономика и бухг учет
-            return first_str_2_7(call)
-        elif call.data == "spec8": # Специальности коммерция
-            return first_str_2_8(call)
-        elif call.data == "spec9": # Специальности финансы
-            return first_str_2_9(call)
-        elif call.data == "spec10": # Специальности соц-культ деятельность
-            return first_str_2_10(call)
-        elif call.data == "spec11": # Специальности народное худ творчество
-            return first_str_2_11(call)
-        elif call.data == "spec12": # Специальности коррекцияонная педагогика в нач образовании
-            return first_str_2_12(call)
-        elif call.data == "spec13": # Специальности Специальное дошкольное образование
-            return first_str_2_13(call)
-        elif call.data == "docum": # документы
-            return first_str_3(call)
-        elif call.data == "kak_postup": # как поступить
-            return first_str_4(call)
-        elif call.data == "cost": # цена обучения
-            return first_str_5(call)
-        elif call.data == "exams": # Вступительные испытания
-            return first_str_6(call)
-        elif call.data == "dop_degree": # доп образование
-            return first_str_7(call)
-        elif call.data == "clubs_abitur": # клубы
-            return first_str_8(call)
-        elif call.data == "license1": # Лицензия и аккредитация
-            return first_str_9(call)
-        elif call.data == "partnership": # Партнеры колледжа
-            return first_str_10(call)
-        elif call.data == "affisha": # афиша
-            return first_str_11(call)
-        elif call.data == "kuratori": # кураторы
-            return first_str_12(call)
-        elif call.data == "way": # как добраться
-            return first_str_13(call)
-        elif call.data == "transac": # оплата
-            return first_str_14(call)
-        elif call.data == "links1": # ссылки
-            return first_str_15(call)
+        
+
+        dict_1 = {'about':first_str_1,
+                  'specials':first_str_2,
+                  'docum':first_str_3,
+                  'kak_postup':first_str_4,
+                  'cost':first_str_5,
+                  'exams':first_str_6,
+                  'dop_degree':first_str_7,
+                  'clubs_abitur':first_str_8,
+                  'license1':first_str_9,
+                  'partnership':first_str_10,
+                  'affisha':first_str_11,
+                  'kuratori':first_str_12,
+                  'way':first_str_13,
+                  'transac':first_str_14,
+                  'links1':first_str_15,
+                  'spec1':first_str_2_1,
+                  'spec2':first_str_2_2,
+                  'spec3':first_str_2_3,
+                  'spec4':first_str_2_4,
+                  'spec5':first_str_2_5,
+                  'spec6':first_str_2_6,
+                  'spec7':first_str_2_7,
+                  'spec8':first_str_2_8,
+                  'spec9':first_str_2_9,
+                  'spec10':first_str_2_10,
+                  'spec11':first_str_2_11,
+                  'spec12':first_str_2_12,
+                  'spec13':first_str_2_13,
+                  }  
+        
+        if call.data in dict_1:
+            dict_1[call.data](call)
+
+        #if call.data == "about": # О колледже
+        #    return first_str_1(call)
+        #elif call.data == "specials": # Специальности
+        #    return first_str_2(call)
+        #elif call.data == "spec1": # Специальность дизайн
+        #    return first_str_2_1(call)
+        #elif call.data == "spec2": # Специальности реклама
+        #    return first_str_2_2(call)
+        #elif call.data == "spec3": # Специальности инф системы и программ
+        #    return first_str_2_3(call)
+        #elif call.data == "spec4": # Специальности юриспруденция
+        #    return first_str_2_4(call)
+        #elif call.data == "spec5": # Специальности правоохран деят
+        #    return first_str_2_5(call)
+        #elif call.data == "spec6": # Специальности операционная деятельность в логистике
+        #    return first_str_2_6(call)
+        #elif call.data == "spec7": # Специальности экономика и бухг учет
+        #    return first_str_2_7(call)
+        #elif call.data == "spec8": # Специальности коммерция
+        #    return first_str_2_8(call)
+        #elif call.data == "spec9": # Специальности финансы
+        #    return first_str_2_9(call)
+        #elif call.data == "spec10": # Специальности соц-культ деятельность
+        #    return first_str_2_10(call)
+        #elif call.data == "spec11": # Специальности народное худ творчество
+        #    return first_str_2_11(call)
+        #elif call.data == "spec12": # Специальности коррекцияонная педагогика в нач образовании
+        #    return first_str_2_12(call)
+        #elif call.data == "spec13": # Специальности Специальное дошкольное образование
+        #    return first_str_2_13(call)
+        #elif call.data == "docum": # документы
+        #    return first_str_3(call)
+        #elif call.data == "kak_postup": # как поступить
+        #    return first_str_4(call)
+        #elif call.data == "cost": # цена обучения
+        #    return first_str_5(call)
+        #elif call.data == "exams": # Вступительные испытания
+        #    return first_str_6(call)
+        #elif call.data == "dop_degree": # доп образование
+        #    return first_str_7(call)
+        #elif call.data == "clubs_abitur": # клубы
+        #    return first_str_8(call)
+        #elif call.data == "license1": # Лицензия и аккредитация
+        #    return first_str_9(call)
+        #elif call.data == "partnership": # Партнеры колледжа
+        #    return first_str_10(call)
+        #elif call.data == "affisha": # афиша
+        #    return first_str_11(call)
+        #elif call.data == "kuratori": # кураторы
+        #    return first_str_12(call)
+        #elif call.data == "way": # как добраться
+        #    return first_str_13(call)
+        #elif call.data == "transac": # оплата
+        #    return first_str_14(call)
+        #elif call.data == "links1": # ссылки
+        #    return first_str_15(call)
 
 
