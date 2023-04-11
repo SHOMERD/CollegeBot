@@ -28,7 +28,7 @@ class sotrud_menu():
             
             # добавление кнопок к клавиатуре
             next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6, page_next, back)
-           
+            
             # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Сотрудника\Преподавателя\nСтраница номер: 1️⃣ ', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)    
