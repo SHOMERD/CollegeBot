@@ -43,7 +43,7 @@ class student_menu():
             page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Stud_page3')
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             
-            next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6,page_next, page_back, back)
+            next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6, page_back,page_next, back)
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 2️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def menu_page3(call):
@@ -63,7 +63,7 @@ class student_menu():
             page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Stud_page4')
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             
-            next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6, page_next, page_back, back)
+            next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6,  page_back,page_next, back)
             
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 3️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
@@ -84,7 +84,7 @@ class student_menu():
             page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Stud_page5')
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             
-            next_menu.add(button_1,button_2,button_4, button_3,button_5,button_6,page_next, page_back, back)
+            next_menu.add(button_1,button_2,button_4, button_3,button_5,button_6, page_back,page_next, back)
             
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 4️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)

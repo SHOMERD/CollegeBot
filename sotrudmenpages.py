@@ -44,7 +44,7 @@ class sotrud_menu():
             page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Sotr_page3')
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             
-            next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6,page_next, page_back, back)
+            next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6, page_back,page_next, back)
             
             bot.edit_message_text('Меню для Сотрудника\Преподавателя\nСтраница номер: 2️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
@@ -69,12 +69,14 @@ class sotrud_menu():
             
             bot.edit_message_text('Меню для Сотрудника\Преподавателя\nСтраница номер: 3️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
-        if call.data == "Sotr_page1": # Первая страница меню Сотрудника\Преподавателя
-            menu_page1(call)
-        elif call.data == "Sotr_page2": # вторая страница меню Сотрудника\Преподавателя
-            menu_page2(call)
-        elif call.data == "Sotr_page3": # третья страница Сотрудника\Преподавателя
-            menu_page3(call)
+        
+        Sotrud_page = {'Sotr_page1':menu_page1,
+                     'Sotr_page2':menu_page2,
+                     'Sotr_page3':menu_page3,
+                     }       
+        
+        if call.data in Sotrud_page:
+            Sotrud_page[call.data](call)
 
 
 

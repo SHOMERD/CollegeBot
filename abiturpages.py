@@ -65,12 +65,13 @@ class abitur_menu():
             
             bot.edit_message_text('Меню для Абитуриента/Родителя абитуриента\nСтраница номер: 3️⃣ ', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
-        if call.data == "Abitur_page1": # Первая страница меню Абитуриентa или Родителя абитуриента
-            menu_page1(call)
-        elif call.data == "Abitur_page2": # вторая страница меню Абитуриентa или Родителя абитуриента
-            menu_page2(call)
-        elif call.data == "Abitur_page3": # третья страница меню Абитуриентa или Родителя абитуриента
-            menu_page3(call)
+        abitur_page = {'Abitur_page1':menu_page1,
+                     'Abitur_page2':menu_page2,
+                     'Abitur_page3':menu_page3,
+                     }       
+        
+        if call.data in abitur_page:
+            abitur_page[call.data](call)
 
 
 
