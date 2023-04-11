@@ -114,7 +114,9 @@ class student_menu():
                      'Stud_page4':menu_page4,
                      'Stud_page5':menu_page5
                      }       
-            
+        
+        if call.data in stud_page:
+            stud_page[call.data](call)
             
             
         #if call.data == "Stud_page1": # Первая страница меню студента\родителя
