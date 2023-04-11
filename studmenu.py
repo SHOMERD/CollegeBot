@@ -518,7 +518,9 @@ E-mail: do@opencollege-nsk.ru или в ТГ: @ngok_do
             
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page3")
             button_2 = telebot.types.InlineKeyboardButton('Зайти в  ЭлЖур', url="https://opencollege-nsk.eljur.ru/authorize")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2, button_1, back)
             
             text = """Получить доступ к Электронному журналу можно в учебном офисе (каб. 267).
@@ -548,12 +550,17 @@ https://opencollege-nsk.eljur.ru/authorize,
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_19(call): # Транспортная карта
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page3")
             button_2 = telebot.types.InlineKeyboardButton('Зайти в  ЭлЖур', url="https://t-karta.ru/novosibirsk/student")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             next_menu.add(button_2, button_1, back)
+            
             text = """КАК ПОЛУЧИТЬ ТРАНСПОРТНУЮ КАРТУ СТУДЕНТА?
 
 1️⃣ - необходимо заполнить анкету по ссылке https://t-karta.ru/novosibirsk/student
@@ -595,12 +602,18 @@ https://opencollege-nsk.eljur.ru/authorize,
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_20(call): # Сотрудники
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page4")
             button_2 = telebot.types.InlineKeyboardButton('Все сотрудники', url="https://opencollege-nsk.ru/college/structure/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2, button_1, back)
+            
             text = """Познакомиться со всеми сотрудниками колледжа можно на нашем сайте:
 
 https://opencollege-nsk.ru/college/structure/
@@ -608,11 +621,17 @@ https://opencollege-nsk.ru/college/structure/
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_21(call): # Консультация психолога
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page4")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Если у тебя возникли сложности или тебе нужен совет, консультация психолога, ты можешь записаться на приём к нашему профессиональному психологу.
 
 Контакты:
@@ -626,12 +645,18 @@ https://opencollege-nsk.ru/college/structure/
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_22(call): # Самоконтроль
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page4")
             button_2 = telebot.types.InlineKeyboardButton('Подробнее о совете', url="https://opencollege-nsk.ru/live/association/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
-            next_menu.add(button_1, back)
+            
+            next_menu.add(button_2, button_1, back)
+            
             text = """Совет обучающихся — единственный постоянно действующий представительный и координирующий орган всех студентов колледжа, центр студенческого самоуправления, работающий на благо студентов со дня основания колледжа.
 
 Мы помогаем в организации внеучебной жизни в колледже, реализовываем социально значимые студенческие инициативы, содействуем раскрытию потенциала и формированию новых навыков у студентов в творческих, спортивных и образовательных направлениях. Помогаем в решении образовательных, социальных и бытовых проблем, защищаем права и представляем законные интересы студентов перед органами управления, а также стараемся сделать всё возможное, чтобы каждый обучающийся чувствовал себя комфортно в стенах нашего колледжа.
@@ -670,11 +695,17 @@ https://opencollege-nsk.ru/college/structure/
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_23(call): # Потерял\нашел вещь
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page4")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Если Вы потеряли или нашли чью-то вещь, Вам необходимо обратиться на пост охраны и передать чужую или спросить свою вещь. На посту охраны хранятся потерянные вещи. Если это не даст результатов, можно попробовать написать о ситуации в наш общий чат 
         
     https://t.me/opencollege_nsk
@@ -682,23 +713,35 @@ https://opencollege-nsk.ru/college/structure/
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_24(call): # Правила внутреннего распорядка
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page4")
             button_2 = telebot.types.InlineKeyboardButton('Перейти на сайт', url="https://opencollege-nsk.ru/live/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2, button_1, back)
+            
             text = """В нашем колледже действуют правила внутреннего распорядка, подробнее о них можно узнать на нашем сайте https://opencollege-nsk.ru/live/
     """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_25(call): # Пропускной режим
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page4")
             button_2 = telebot.types.InlineKeyboardButton('Перейти на сайт', url="https://opencollege-nsk.ru/live")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """В нашем колледже действуют пропускной режим, подробнее о нем можно узнать на нашем сайте https://opencollege-nsk.ru/live
 
 *Главное правило - всегда носи с собой студенческий билет!
@@ -706,21 +749,33 @@ https://opencollege-nsk.ru/college/structure/
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_26(call): # Скидки и виды поощрений
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page5")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """На данный момент в нашем колледже идёт процесс разработки возможных скидок и образовательных грантов для наших студентов. Образовательные гранты мы планируем начать выдавать в 2023-2024 учебном году. Подробные условия получения гранта будут опубликованы позже.
     """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_27(call): # Другой вопрос
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page5")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Если Ваш вопрос связан с учебным процессом, например, Вы заболели и хотите зачесть пропуски по уважительной причине, потеряли студенческий билет, хотите написать объяснительную, желаете перевестись к нам в колледж, перевестись от нас или отчислиться, узнать график платежей, написать заявление на отсрочку платежа, заключить дополнительное соглашение к договору, у Вас возникли сложности с освоением образовательной программы и другое, Вам необходимо обратиться в учебный офис.
 
 Учебный офис (кабинет 267) работает по будням с 9:00 до 18:00. 
@@ -750,11 +805,17 @@ E-mail: leskova-iv@opencollege-nsk.ru
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_28(call): # Ссылки
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page5")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Наш сайт: https://opencollege-nsk.ru/
 
 Телеграм канал: https://t.me/opencollege_nsk
