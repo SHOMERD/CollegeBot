@@ -4,169 +4,213 @@ import telebot
 bot = telebot.TeleBot("6086891510:AAHhYBpEb_as4GwFW6Hw6N_y0yLcXDksW60")
 
 class student():
+    
     def elif_stud(call):
+        
         def first_str_1(call): # Получить справку
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page1")
             button_2 = telebot.types.InlineKeyboardButton('Заказать справку', url="https://opencollege-nsk.ru/live/#extract")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Получить справку (по месту требования) можно в учебном офисе колледжа, для этого необходимо предварительно её заказать. 
 
-    Заказать справку можно лично посетив учебный офис (кабинет 267) в рабочее время (с 9:00 до 18:00) или оформив заявку на нашем сайте:  https://opencollege-nsk.ru/live/#extract 
+Заказать справку можно лично посетив учебный офис (кабинет 267) в рабочее время (с 9:00 до 18:00) или оформив заявку на нашем сайте:  https://opencollege-nsk.ru/live/#extract 
 
-    Необходимо указать, куда именно требуется справка: налоговая, место работы, военкомат, другое место.
+Необходимо указать, куда именно требуется справка: налоговая, место работы, военкомат, другое место.
 
-    После заказа справки она будет подготовлена в течение трех рабочих дней.
+После заказа справки она будет подготовлена в течение трех рабочих дней.
 
-    Уточнить, готова ли она, можно в учебном офисе:
+Уточнить, готова ли она, можно в учебном офисе:
 
-    для 1-2 курса: 
-    специалист учебного офиса - Елена Андреевна Козлова
-    тел.: 8 (383) 363-63-63, добавочный 1008 ; 
-    E-mail: bobrova-ea@opencollege-nsk.ru
+для 1-2 курса: 
+специалист учебного офиса - Елена Андреевна Козлова
+тел.: 8 (383) 363-63-63, добавочный 1008 ; 
+E-mail: bobrova-ea@opencollege-nsk.ru
 
-    для 3-4 курса: 
-    специалист учебного - Ирина Валерьевна Лескова                               
-    тел.: 8 (383) 363-63-63, добавочный 1007; 
-    E-mail: leskova-iv@opencollege-nsk.ru
+для 3-4 курса: 
+специалист учебного - Ирина Валерьевна Лескова                               
+тел.: 8 (383) 363-63-63, добавочный 1007; 
+E-mail: leskova-iv@opencollege-nsk.ru
 
     """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2(call): # Получить отсрочку
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page1")
             button_2 = telebot.types.InlineKeyboardButton('Заказать справку', url="https://opencollege-nsk.ru/live/#extract")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Получить справку (по месту требования) можно в учебном офисе колледжа, для этого необходимо предварительно её заказать. 
 
-        Заказать справку можно лично посетив учебный офис (кабинет 261) в рабочее время (с 9:00 до 18:00) или оформив заявку на нашем сайте:  https://opencollege-nsk.ru/live/#extract, обязательно указав, что справка необходима в военный комиссариат.
-        После заказа справки она будет подготовлена в течение трех рабочих в течении трех рабочих дней.
+Заказать справку можно лично посетив учебный офис (кабинет 261) в рабочее время (с 9:00 до 18:00) или оформив заявку на нашем сайте:  https://opencollege-nsk.ru/live/#extract, обязательно указав, что справка необходима в военный комиссариат.
+После заказа справки она будет подготовлена в течение трех рабочих в течении трех рабочих дней.
 
-        Уточнить, готова ли она, можно в учебном офисе у специалиста по ведению воинского учета и военно-патриотической работе – Рудина Андрея Владимировича (каб.261).
-    """
+Уточнить, готова ли она, можно в учебном офисе у специалиста по ведению воинского учета и военно-патриотической работе – Рудина Андрея Владимировича (каб.261).
+"""
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_3(call): # Расписание занятий
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page1")
             button_2 = telebot.types.InlineKeyboardButton('Посмотреть расписание', url="https://docs.google.com/spreadsheets/d/1FiMov0r4UUDKT6A56NWMImpoUakDC2YDevgaOpJQ7Qc/edit#gid=1514109748")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Посмотреть актуальное расписание занятий можно по ссылке:
-    https://docs.google.com/spreadsheets/d/1FiMov0r4UUDKT6A56NWMImpoUakDC2YDevgaOpJQ7Qc/edit#gid=1514109748
+https://docs.google.com/spreadsheets/d/1FiMov0r4UUDKT6A56NWMImpoUakDC2YDevgaOpJQ7Qc/edit#gid=1514109748
     """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_4(call): # Расписание звонков
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page1")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Расписание звонков:
 
-    🛎 1 ПАРА С 9:00 ДО 10:30 🛎
+🛎 1 ПАРА С 9:00 ДО 10:30 🛎
 
-    перемена - 10 минут 
+перемена - 10 минут 
 
-    🛎 2 ПАРА С 10:40 ДО 12:10 🛎
+🛎 2 ПАРА С 10:40 ДО 12:10 🛎
 
-    перемена 20 минут
+перемена 20 минут
 
-    🛎 3 ПАРА С 12:30 ДО 14:00 🛎
+🛎 3 ПАРА С 12:30 ДО 14:00 🛎
 
-    перемена 20 минут 
+перемена 20 минут 
 
-    🛎 4 ПАРА С 14:20 ДО 15:50 🛎
+🛎 4 ПАРА С 14:20 ДО 15:50 🛎
 
-    перемена 10 минут
+перемена 10 минут
 
-    🛎 5 ПАРА С 16:00 ДО 17:30 🛎
+🛎 5 ПАРА С 16:00 ДО 17:30 🛎
 
-    перемена 10 минут
+перемена 10 минут
 
-    🛎 6 ПАРА С 17:40 ДО 19:10 🛎
+🛎 6 ПАРА С 17:40 ДО 19:10 🛎
     """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_5(call): # Связаться с администрацией
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page1")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Директор колледжа
-    Катрич Ольга Владимировна 
+Катрич Ольга Владимировна 
 
-    Тел.: 8(383)363-63-63, доп.1001
-    E-mail: director@opencollege-nsk.ru
-    ТГ: @olgakatrish
-    Кабинет 252
+Тел.: 8(383)363-63-63, доп.1001
+E-mail: director@opencollege-nsk.ru
+ТГ: @olgakatrish
+Кабинет 252
 
-    Заместитель директора по учебно-методической работе
-    Хохлова Юлия Андреевна
+Заместитель директора по учебно-методической работе
+Хохлова Юлия Андреевна
 
-    Тел.: 8(383)363-63-63, доп.1005
-    E-mail: hohlova-ya@opencollege-nsk.ru
-    ТГ: @uliahohlova
-    Кабинет 263
+Тел.: 8(383)363-63-63, доп.1005
+E-mail: hohlova-ya@opencollege-nsk.ru
+ТГ: @uliahohlova
+Кабинет 263
 
-    Заместитель директора по внеучебной деятельности                                                           
-    Изотов Алексей Александрович 
+Заместитель директора по внеучебной деятельности                                                           
+Изотов Алексей Александрович 
 
-    Тел.: 8(383)363-63-63, доп.1002
-    E-mail: vr@opencollege-nsk.ru
-    ТГ: @aleks_izotov
-    Кабинет 264
+Тел.: 8(383)363-63-63, доп.1002
+E-mail: vr@opencollege-nsk.ru
+ТГ: @aleks_izotov
+Кабинет 264
     """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_6(call): # Оплата
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page1")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Оплатить обучение можно онлайн! 
 
-    График платежей у каждого индивидуальный, посмотреть его можно в приложении к Вашему договору, но если Вы не помните свой график, можно уточнить его в учебном офисе 8 (383) 363-63-63 (доб.1007 или 1008).
+График платежей у каждого индивидуальный, посмотреть его можно в приложении к Вашему договору, но если Вы не помните свой график, можно уточнить его в учебном офисе 8 (383) 363-63-63 (доб.1007 или 1008).
 
-    Мы точно можем сказать, что если вы платите поквартально, платежи Вы должны внести до: 31 августа, 15 ноября, 15 февраля и 15 апреля. 
+Мы точно можем сказать, что если вы платите поквартально, платежи Вы должны внести до: 31 августа, 15 ноября, 15 февраля и 15 апреля. 
 
 
-    ИНСТРУКЦИЯ ПО ОПЛАТЕ ЧЕРЕЗ ПРИЛОЖЕНИЕ СБЕРА (можно оплатить через другое)
-    1️⃣ Вкладка «Платежи»
+ИНСТРУКЦИЯ ПО ОПЛАТЕ ЧЕРЕЗ ПРИЛОЖЕНИЕ СБЕРА (можно оплатить через другое)
+1️⃣ Вкладка «Платежи»
 
-    2️⃣ В поисковой строке выбираете «Платеж по реквизитам»
+2️⃣ В поисковой строке выбираете «Платеж по реквизитам»
 
-    3️⃣ Выбираете «Оплата по ИНН» и вводите наш ИНН 5404089162
+3️⃣ Выбираете «Оплата по ИНН» и вводите наш ИНН 5404089162
 
-    4️⃣ Заполняете поля «Расчетный счет получателя» и «БИК банка получателя»
-    Р/с 40703810744050003777
-    БИК 045004641
+4️⃣ Заполняете поля «Расчетный счет получателя» и «БИК банка получателя»
+Р/с 40703810744050003777
+БИК 045004641
 
-    5️⃣ В следующей вкладке вы увидите наше наименование АНО СПО "НОВОСИБИРСКИЙ ГОРОДСКОЙ ОТКРЫТЫЙ КОЛЛЕДЖ" - это подтверждение того, что все данные заполнены верно. 
+5️⃣ В следующей вкладке вы увидите наше наименование АНО СПО "НОВОСИБИРСКИЙ ГОРОДСКОЙ ОТКРЫТЫЙ КОЛЛЕДЖ" - это подтверждение того, что все данные заполнены верно. 
 
-    6️⃣ Заполняете ФИО плательщика (ФИО обучающегося или родителя, указанного в договоре) и назначение платежа «Оплата за обучение студента ФИО, № договора»
+6️⃣ Заполняете ФИО плательщика (ФИО обучающегося или родителя, указанного в договоре) и назначение платежа «Оплата за обучение студента ФИО, № договора»
 
-    7️⃣ Вводите сумму
+7️⃣ Вводите сумму
 
-    8️⃣ Производите оплату
+8️⃣ Производите оплату
     """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_7(call): # Финансовая задолжность
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data='Stud_page1')
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Уточнить Вашу финансовую задолженность и срок оплаты обучения можно в учебном офисе (каб. 267).
 
 Учебный офис можно посетить лично с ПН по ПТ с 9:00 до 18:00 или позвонить по телефону, написать письмо на электронную почту, либо сообщение в электронном журнале.
@@ -188,11 +232,17 @@ E-mail: leskova-iv@opencollege-nsk.ru
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_8(call): # Узнать долги/пересдать сессию
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page2")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Уточнить Вашу академическую задолженность и возможность пересдать долги по учебным дисциплинам можно в учебном офисе (каб. 267).
 
 Учебный офис можно посетить лично с ПН по ПТ с 9:00 до 18:00 или позвонить по телефону, написать письмо на электронную почту, либо сообщение в электронном журнале.
@@ -216,12 +266,18 @@ E-mail: leskova-iv@opencollege-nsk.ru
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_9(call): # Заочка
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page2")
             button_2 = telebot.types.InlineKeyboardButton('Перейти в Instudy', url="https://opencollege-nsk.ru/instudy")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Преимущества дистанционного обучения в нашем колледже:
 1️⃣ - Всегда на связи
 Улучшает коммуникации между студентами, кураторами и преподавателями. Мы общаемся на учебной платформе и в чатах Telegram.
@@ -243,11 +299,17 @@ E-mail: leskova-iv@opencollege-nsk.ru
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_10(call): # Практика
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page2")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Подробная информация о прохождении практики располагается на нашем сайте по ссылке: https://opencollege-nsk.ru/live/career/
 Сроки прохождения практики можно посмотреть в учебном плане Вашей группы на сайте: https://opencollege-nsk.ru/sveden/education/eduop/
 
@@ -275,12 +337,18 @@ E-mail: praktika@opencollege-nsk.ru
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_11(call): # Афиша
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page2")
             button_2 = telebot.types.InlineKeyboardButton('Афиша мероприятий', url="https://docs.google.com/spreadsheets/d/1BD8GIu3mFyJaGab3cUBPxwgwu6J3KseI/edit?usp=drivesdk&ouid=114275661080998669061&rtpof=true&sd=true")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Ближайшие мероприятия колледжа можно посмотреть на нашем сайте в разделе “События” 
 https://opencollege-nsk.ru/live/events/
 или в Афише всех ближайших событий по кнопке в меню ⬇️
@@ -290,13 +358,19 @@ https://opencollege-nsk.ru/live/events/
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_12(call): # Клубы
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page2")
             button_2 = telebot.types.InlineKeyboardButton('Узнать подробнее', url="https://opencollege-nsk.ru/live/extracurricular/?group=creation")
             button_3 = telebot.types.InlineKeyboardButton('Вступить в траекторию', url="https://forms.gle/BLf9EBoycc8EagQx5")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_3,button_1, back)
+            
             text = """Параллельно получению образования по своей основной учебной программе, каждый студент колледжа может выбрать любую из внеучебных траекторий, в рамках которой ему будет предложено развивать собственные навыки с использованием ресурсов колледжа.
         
 В каждой траектории есть клубы по интересам, в которые можно вступить, а также у каждого студента есть возможность стать членом комитета траектории и заниматься планированием деятельности и развитием всей траектории.
@@ -313,12 +387,18 @@ https://opencollege-nsk.ru/live/extracurricular/?group=creation
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_13(call): # Дополнительное образование или второй диплом
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page2")
             button_2 = telebot.types.InlineKeyboardButton('Перейти на сайт', url="https://opencollege-nsk.ru/education/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2, button_1, back)
+            
             text = """Ты хочешь развиваться сразу в нескольких направлениях и успеть за студенческие годы как можно больше?
 
 А может, тебе кажется, что ты поступил не совсем туда, и осознание этого пришло уже во время учебы.
@@ -332,12 +412,18 @@ E-mail: do@opencollege-nsk.ru или в ТГ: @ngok_do
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_14(call): # Дополнительное образование или второй диплом
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page3")
             button_2 = telebot.types.InlineKeyboardButton('Перейти на сайт', url="https://opencollege-nsk.ru/education/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2, button_1, back)
+            
             text = """Ты хочешь развиваться сразу в нескольких направлениях и успеть за студенческие годы как можно больше?
 
 А может, тебе кажется, что ты поступил не совсем туда, и осознание этого пришло уже во время учебы.
@@ -351,23 +437,35 @@ E-mail: do@opencollege-nsk.ru или в ТГ: @ngok_do
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_15(call): # Учебные планы
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page3")
             button_2 = telebot.types.InlineKeyboardButton('Перейти на сайт', url="https://opencollege-nsk.ru/sveden/education/eduop/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2, button_1, back)
+            
             text = """Информацию об описании образовательной программы с приложением образовательной программы в форме электронного документа, в том числе учебные планы можно посмотреть на нашем сайте в сведениях об обрганизации: https://opencollege-nsk.ru/sveden/education/eduop/
 """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_16(call): # Электронная библиотека
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page3")
             button_2 = telebot.types.InlineKeyboardButton('Зайти в библиотеку', url="http://www.iprbookshop.ru/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2, button_1, back)
+            
             text = """Для Вас доступна цифровая библиотека, в которой необходимо зарегистрироваться и, конечно же, не забывать пользоваться не только в учебных, но и в личных целях
 
 ЧТОБЫ ЗАРЕГИСТРИРОВАТЬСЯ:
@@ -392,12 +490,18 @@ E-mail: do@opencollege-nsk.ru или в ТГ: @ngok_do
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_17(call): # Связаться с преподавателем
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page3")
             button_2 = telebot.types.InlineKeyboardButton('Зайти в ЭлЖур', url="https://opencollege-nsk.eljur.ru/authorize")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2, button_1, back)
+            
             text = """Связаться с преподавателем или сотрудником колледжа можно в Электронном журнале НГОК (https://opencollege-nsk.eljur.ru/authorize). 
 
 Для этого Вам необходимо авторизоваться в журнале и написать сообщение преподавателю, выбрав его в адресатах. В ЭлЖуре Вы можете написать сообщению любому сотруднику или студенту колледжа. 
@@ -407,12 +511,18 @@ E-mail: do@opencollege-nsk.ru или в ТГ: @ngok_do
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_18(call): # ЭлЖур
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page3")
             button_2 = telebot.types.InlineKeyboardButton('Зайти в  ЭлЖур', url="https://opencollege-nsk.eljur.ru/authorize")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
-            next_menu.add(button_1, back)
+            
+            next_menu.add(button_2,button_1, back)
+            
             text = """Получить доступ к Электронному журналу можно в учебном офисе (каб. 267).
 
 Учебный офис можно посетить лично с ПН по ПТ с 9:00 до 18:00 или написать письмо на электронную почту. 
