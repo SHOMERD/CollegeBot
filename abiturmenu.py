@@ -8,12 +8,18 @@ class abitur():
     def abitur_bum(call):
         
         def first_str_1(call): # О колледже
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page1")
             button_2 = telebot.types.InlineKeyboardButton('Подробнее на сайте', url="https://opencollege-nsk.ru/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Новосибирский городской открытый колледж - это территория смыслов, личных возможностей и цифровых технологий.
 
 Наша миссия - мы даём возможность каждому студенту стать главным участником учебного процесса, непринужденно и с интересом осваивать выбранную профессию, при этом жить активной студенческой жизнью и всесторонне развиваться. Личностно и профессионально.
@@ -32,8 +38,11 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2(call): # Специальности
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page1")
             button_2 = telebot.types.InlineKeyboardButton('Дизайн (по отраслям)', callback_data="spec1")
             button_3 = telebot.types.InlineKeyboardButton('Реклама', callback_data="spec2")
@@ -48,20 +57,27 @@ class abitur():
             button_12 = telebot.types.InlineKeyboardButton('Народное художественное творчество', callback_data="spec11")
             button_13 = telebot.types.InlineKeyboardButton('Коррекционная педагогика в нач. образовании', callback_data="spec12")
             button_14 = telebot.types.InlineKeyboardButton('Специальное дошкольное образование', callback_data="spec13")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             next_menu.add(button_2,button_3,button_4,button_5,button_6,button_7,button_8,button_9,button_10,button_11,button_12,button_13, button_14,button_1, back)
+            
             text = """Специальности:
 """
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_1(call): # специальность дизайн
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
             button_3 = telebot.types.InlineKeyboardButton('Видео про Дизайн', url="https://youtu.be/_1DTn-nMuAU")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             next_menu.add(button_2,button_3,button_1, back)
+            
             text = """Дизайн (по отраслям)
 
 🎨 Дизайнер-это не художник, а скорее разработчик. Используя свою фантазию и навыки визуального оформления (это может быть рисование карандашом, проектирование на планшете или 3D-моделирование в специальной программе) он создает функциональную оболочку объекта или продукта.
@@ -75,12 +91,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_2(call): # специальность реклама
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Реклама
 
 📸 Любой организации, предоставляющей те или иные услуги, требуется специалист по рекламе. Специалист по рекламе отвечает за планирование и осуществление рекламных мероприятий по продвижению производимой организацией продукции или услуг и определяет затраты на их проведение с учетом характера спроса (равномерного или сезонного) на товары (услуги), совершенствует методы проведения рекламных мероприятий, эффективность и снижение затрат, связанных с рекламой. Кроме того, специалист по рекламе изучает данные анализа мотивации спроса на производимую продукцию или оказываемые услуги, действенности рекламы и определяет направленность проведения рекламных кампаний.
@@ -94,12 +116,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_3(call): # специальность инф системы и программ
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Информационные системы и программирование
 
 ⌨ На специальности “Информационные системы и программирование” обучение осуществляется только по очной форме. Поступить на специальность можно после 9 и 11 класса.
@@ -112,12 +140,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_4(call): # специальность юриспруденция
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Юриспруденция 
 
 👨‍⚖Образовательная программа направлена на подготовку юристов среднего звена в сфере обеспечения реализации прав граждан в сфере пенсионного обеспечения и социальной защиты, а также организационного обеспечения деятельности учреждений социальной защиты населения и органов Пенсионного фонда Российской Федерации.
@@ -131,12 +165,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_5(call): # специальность правоохрана
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Правоохранительная деятельность
 
 ⏳На специальности “Правоохранительная деятельность” обучение осуществляется по очной и очно-заочной форме. Поступить на специальность можно после 9 (очная форма) и 11 класса (очно-заочная форма).
@@ -148,12 +188,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_6(call): # специальность логистика
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Операционная деятельность в логистике
 
 🚛 Логист – это человек, который профессионально занимается доставкой товара, дальнейшим его складированием, а также тот, кто разрабатывает наиболее выгодную схему поставок. Это человек, который ищет надежных партнеров, проводит расчеты, занимается анализом рынка транспортных услуг, готовит необходимые документы.
@@ -167,12 +213,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_7(call): # специальность бухг учет
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Экономика и бухгалтерский учет
 
 💰 Бухгалтерия – одно из самых популярных направлений среди специальностей среднего профессионального образования. Глубокие теоретические знания и практическая отработка навыков по ведению бухгалтерского учета предприятия – этой подготовки достаточно для квалифицированного и грамотного обеспечения финансовой стабильности предприятия.
@@ -186,12 +238,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_8(call): # специальность коммерция
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Коммерция
 
 🛍 Вы сделаете выгодную и долгосрочную инвестицию в свое стабильное и успешное будущее. Вы станете востребованным специалистом на рынке труда, так как у вас будет достаточно знаний и навыков, которые ценятся в каждой компании. Таких навыков, которых, при желании, будет достаточно даже для открытия своего собственного бизнеса.
@@ -205,12 +263,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_9(call): # специальность финансы
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Финансы
 
 💴 В условиях рыночной экономики финансовая стабильность компании является основой ее развития. Менеджмент предприятия направляет усилия на обеспечение финансового роста, увеличение прибылей, улучшение всех экономических показателей. Поэтому в штатной структуре фирмы весомую роль играют финансисты, отвечающие за ее финансово-кредитную политику. С учетом важности этого направления в бизнесе специалисты имеющие квалификацию финансиста пользуются большим спросом.
@@ -224,12 +288,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_10(call): # специальность соц-культурная деятельность
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Социально-культурная деятельность
 
 🎭На специальности “Социально-культурная деятельность (по видам) ” обучение осуществляется только по очной форме. Поступить на специальность можно после 9 и 11 класса.
@@ -241,12 +311,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_11(call): # специальность народное худ творчество
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Народное художественное творчество
 
 💃На специальности “Народное художественное творчество (по видам) ” обучение осуществляется только по очной форме. Поступить на специальность можно после 9 класса.
@@ -258,12 +334,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_12(call): # специальность коррекционная педагогика
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Коррекционная педагогика в начальном образовании
 
 👩‍🏫На специальности “Коррекционная педагогика в начальном образовании” обучение осуществляется по очной и заочной форме. Поступить на специальность можно после 9 класса и 11 класса.
@@ -275,12 +357,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_2_13(call): # специальность спец дошкольное образование
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="specials")
             button_2 = telebot.types.InlineKeyboardButton('На сайт', url="https://opencollege-nsk.ru/speciality/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Специальное дошкольное образование
 
 👩‍🏫На специальности “Специальное дошкольное образование” обучение осуществляется по очной и заочной форме. Поступить на специальность можно после 9 класса и 11 класса.
@@ -292,11 +380,16 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_3(call): # Документы для поступления
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page1")
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Для поступления Вам потребуется минимальный пакет документов (обязательно при подаче документов на любую форму обучения):
 
 1️⃣ - документ, удостоверяющий личность, гражданство (страница с паспортными данными + страница с регистрацией);
@@ -331,12 +424,18 @@ class abitur():
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_4(call): # Как поступить
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page1")
             button_2 = telebot.types.InlineKeyboardButton('Записаться на прием', url="https://opencollege-nsk.ru/enrollee/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Документы для поступления можно подать следующими способами:
 
 1️⃣ - лично по предварительной записи на сайте - https://opencollege-nsk.ru/enrollee/
@@ -372,12 +471,18 @@ priem@opencollege-nsk.ru
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_5(call): # Стоимость обучения и скидки
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page1")
             button_2 = telebot.types.InlineKeyboardButton('Перейти на сайт', url="https://opencollege-nsk.ru/enrollee/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Стоимость обучения зависит от формы обучения и специальности которую Вы выбираете. Размер скидки зависит от различных факторов (балла аттестата, портфолио, социальных льгот и другого).
 
 Подробнее ознакомиться со стоимостью обучения и скидками можно на нашем сайте: https://opencollege-nsk.ru/enrollee/
@@ -385,12 +490,18 @@ priem@opencollege-nsk.ru
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_6(call): # Вступительные испытания
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page2")
             button_2 = telebot.types.InlineKeyboardButton('Перейти на сайт', url="https://opencollege-nsk.ru/enrollee/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Для некоторых наших направлений подготовки предусмотрены вступительные испытания. Как правило, это те направления, которые требуют определенных навыков (дизайн, реклама, народное художественное творчество). 
 
 На нашем сайте представлен список таких специальностей, а также видов и сроков проведения вступительных испытаний. 
@@ -400,12 +511,18 @@ priem@opencollege-nsk.ru
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_7(call): # Дополнительное образование
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page2")
             button_2 = telebot.types.InlineKeyboardButton('“Перейти на сайт', url="https://opencollege-nsk.ru/education/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """Ты хочешь развиваться сразу в нескольких направлениях и успеть за студенческие годы как можно больше?
 
 А может, тебе кажется, что ты поступил не совсем туда, и осознание этого пришло уже во время учебы.
@@ -422,13 +539,19 @@ E-mail: do@opencollege-nsk.ru или в ТГ: @ngok_do
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_8(call): # Внеучебные траектории
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page2")
             button_2 = telebot.types.InlineKeyboardButton('Узнать подробнее', url="https://opencollege-nsk.ru/live/extracurricular/?group=creation")
             button_3 = telebot.types.InlineKeyboardButton('Студенчкский совет', url="https://opencollege-nsk.ru/live/association/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_3,button_1, back)
+            
             text = """Параллельно получению образования по своей основной учебной программе, каждый студент колледжа может выбрать любую из внеучебных траекторий, в рамках которой ему будет предложено развивать собственные навыки с использованием ресурсов колледжа.
 
 В каждой траектории есть клубы по интересам, в которые можно вступить, а также у каждого студента есть возможность стать членом комитета траектории и заниматься планированием деятельности и развитием всей траектории.
@@ -445,12 +568,18 @@ https://opencollege-nsk.ru/live/extracurricular/?group=creation
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_9(call): # Лицензия и аккредитация
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page2")
             button_2 = telebot.types.InlineKeyboardButton('“Перейти на сайт', url="https://opencollege-nsk.ru/college/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_2,button_1, back)
+            
             text = """АНО СПО “НГОК” имеет лицензию на образовательную деятельность и государственную аккредитацию, что дает право колледжу осуществлять набор студентов и выдавать дипломы государственного образца. 
 
 Наши студенты имеют право на пользование муниципальными льготами и право на отсрочку от службы в армии.
@@ -460,12 +589,17 @@ https://opencollege-nsk.ru/live/extracurricular/?group=creation
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_10(call): # Партнеры колледжа
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page2")
             button_2 = telebot.types.InlineKeyboardButton('Перейти на сайт', url="https://opencollege-nsk.ru/college/partners/")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             next_menu.add(button_2,button_1, back)
+            
             text = """Наш колледж входит в большой образовательный холдинг, но помимо наших образовательных учреждений, мы дружим с другими организациями в сфере образования, науки, бизнеса, культуры, социальной политики, медицины и других сфер. 
 
 Узнать подробнее о наших партнеров можно на сайте - https://opencollege-nsk.ru/college/partners/
@@ -474,12 +608,17 @@ https://opencollege-nsk.ru/live/extracurricular/?group=creation
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_11(call): # Афиша мероприятий
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page3")
             button_2 = telebot.types.InlineKeyboardButton('Перейти в канал', url="https://t.me/opencollege2023")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             next_menu.add(button_2,button_1, back)
+            
             text = """Для гостей и абитуриентов колледжа мы проводим различные мероприятия: дни открытых дверей, мастер-классы, лекции, школы дополнительного образования, курсы подготовки к экзаменам. Большинство из этих мероприятий являются бесплатными.
 
 Подробнее узнать и посмотреть список мероприятий можно в телеграм-канале Абитуриентов колледжа @opencollege2023
@@ -487,12 +626,17 @@ https://opencollege-nsk.ru/live/extracurricular/?group=creation
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_12(call): # Кураторы и наставники
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page3")
             button_2 = telebot.types.InlineKeyboardButton('Список кураторов и наставников', url="https://docs.google.com/spreadsheets/d/1b6Lz7k3KT8uDlekmWQZ30HxZ_5jeEll3ERz5uw4bs4M/edit?usp=drivesdk")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             next_menu.add(button_2,button_1, back)
+            
             text = """В нашем колледже за каждой группой закреплен сотрудник - куратор учебной группы. 
 
 Кураторы группы - это самые активные, коммуникабельные и творческие наши сотрудники. 
@@ -517,11 +661,17 @@ https://opencollege-nsk.ru/live/extracurricular/?group=creation
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_13(call): # Как добраться?
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page3")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """АНО СПО “НГОК” находится по адресу: г. Новосибирск, ул. 2-я Союза Молодежи, дом 31 (вход в правое крыло здания).
 
 Добраться до колледжа можно на общественном транспорте: 
@@ -540,11 +690,17 @@ https://opencollege-nsk.ru/live/extracurricular/?group=creation
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_14(call): # Оплатить обучение
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page3")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Оплатить обучение можно онлайн! 
 
 График платежей у каждого индивидуальный, посмотреть его можно в приложении к Вашему договору, но если Вы не помните свой график, можно уточнить его в приемной комиссии по телефону 8 (383) 363-63-63, доб.1014. 
@@ -573,11 +729,17 @@ https://opencollege-nsk.ru/live/extracurricular/?group=creation
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
         def first_str_15(call): # Наш сайт и социальные сети
+            
             global bot
+            
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page3")
+            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
             next_menu.add(button_1, back)
+            
             text = """Наш сайт: https://opencollege-nsk.ru/
 
 Телеграм канал: t.me/opencollege_nsk
