@@ -518,10 +518,8 @@ E-mail: do@opencollege-nsk.ru или в ТГ: @ngok_do
             
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page3")
             button_2 = telebot.types.InlineKeyboardButton('Зайти в  ЭлЖур', url="https://opencollege-nsk.eljur.ru/authorize")
-            
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
-            
-            next_menu.add(button_2,button_1, back)
+            next_menu.add(button_2, button_1, back)
             
             text = """Получить доступ к Электронному журналу можно в учебном офисе (каб. 267).
 
