@@ -32,6 +32,7 @@ class student_menu():
             # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Студента/Родителя\nСтраница номер: 1️⃣ ', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)    
+        
         def menu_page2(call):  # страница меню студента 2
             
             # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
@@ -58,6 +59,7 @@ class student_menu():
             # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 2️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
+        
         def menu_page3(call):  # страница меню студента 3
             
             # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
@@ -84,6 +86,7 @@ class student_menu():
             # редактирование сообщения с добавлением к нему кнопок
             bot.edit_message_text('Меню для Студента\Родителя\nСтраница номер: 3️⃣', call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
+        
         def menu_page4(call):  # страница меню студента 4
             
             # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
