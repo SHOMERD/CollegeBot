@@ -624,7 +624,42 @@ YouTube: https://youtube.com/@opencollege54
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)# редактирование сообщения по его id и прикрепление
                                                          # к сообщению меню с кнопками
-        
+        if call.data == "raspis_zanyat": # Расписание занятий
+            return first_str_1(call)
+        elif call.data == "raspis_zvonkov": # Расписание звонков
+            return first_str_2(call)
+        elif call.data == "events": # Мероприятия
+            return first_str_3(call)
+        elif call.data == "dopolnitel_obr": # Дополнительное образование
+            return first_str_4(call)
+        elif call.data == "vedomost": # Получить ведомость
+            return first_str_5(call)
+        elif call.data == "dostupElJur": # Доступ в ЭлЖур
+            return first_str_6(call)
+        elif call.data == "Tech_diff": # Технические сложности
+            return first_str_7(call)
+        elif call.data == "post": # Опубликовать пост
+            return first_str_8(call)
+        elif call.data == "kuratoru": # Куратору групп
+            return first_str_9(call)
+        elif call.data == "plans": # Учебные планы
+            return first_str_10(call)
+        elif call.data == "electr_lib": # Электронная библиотека
+            return first_str_11(call)
+        elif call.data == "message_student": # Связаться со студентом
+            return first_str_12(call)
+        elif call.data == "student_diff": # Сложности со студентами
+            return first_str_13(call)
+        elif call.data == "trud": # Трудоустройство/оплата
+            return first_str_14(call)
+        elif call.data == "propusk": # Пропускной режим
+            return first_str_15(call)
+        elif call.data == "rekvisit": # Реквизиты колледжа
+            return first_str_16(call)
+        elif call.data == "other_question": # Другой вопрос
+            return first_str_17(call)
+        elif call.data == "links_sotr": # Наш сайт и социальные сети
+            return first_str_18(call)
 
 
 
