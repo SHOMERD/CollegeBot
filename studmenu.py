@@ -852,58 +852,10 @@ E-mail: leskova-iv@opencollege-nsk.ru
                                   reply_markup=next_menu)
         def first_str_28(call): # Ссылки
             
-            global bot
-            global boolean1
-            global message
-
-            boolean1 = True
-            message = call
-
-            next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+           
             
-            button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page5")
-            
-            back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
-            
-            next_menu.add(button_1, back)
-
-            text= "ssss            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-
-            bot.delete_message(call.message.chat.id, call.message.message_id)
-            
-            bot.send_photo(chat_id = call.message.chat.id, photo=open('photo.jpg', 'rb'), reply_markup = next_menu, caption=text)
-            
-        def deleting(call):
-            
-            global bot
-            global boolean1
-            
-            if boolean1:
-                bot.delete_message(call.message.chat.id, call.message.message_id)
-                
-                    # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
-                
-            
-                # определение объекта клавиатуры с кнопками
-                next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
-            
-                # определение кнопок для клавиатуры
-                button_1 = telebot.types.InlineKeyboardButton('Скидки и виды поощрений', callback_data="sales")
-                button_2 = telebot.types.InlineKeyboardButton('Другой вопрос', callback_data="different_q")
-                button_3 = telebot.types.InlineKeyboardButton('Связаться с администрацией', callback_data="message_admin")
-                button_4 = telebot.types.InlineKeyboardButton('Наш сайт и социальные сети', callback_data="links")
-            
-                page_back = telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data='Stud_page4')
-                page_1 = telebot.types.InlineKeyboardButton(text='🔄 В начало 🔄', callback_data='Stud_page1')
-                back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
-            
-                # добавление кнопок к клавиатуре
-                next_menu.add(button_1,button_2,button_3,button_4, page_back,page_1, back)
-                
-                bot.send_message('Меню для Студента\Родителя\nСтраница номер: 5️⃣ ', call.message.chat.id,
-                                  reply_markup=next_menu)
-                boolean1 = False
-            """
+        
+          
             global bot
             
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
@@ -914,7 +866,7 @@ E-mail: leskova-iv@opencollege-nsk.ru
             
             next_menu.add(button_1, back)
             
-            text = Наш сайт: https://opencollege-nsk.ru/
+            text = """Наш сайт: https://opencollege-nsk.ru/
 
 Телеграм канал: https://t.me/opencollege_nsk
 
@@ -935,10 +887,10 @@ YouTube: https://youtube.com/@opencollege54
 ЭлЖур: https://opencollege-nsk.eljur.ru/authorize
 
 * Instagram, продукт компании Meta, которая признана экстремистской организацией в России.
-
+"""
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
-        """
+        
 
 
         # словарь заменяющий длинную цепь if,elif,elif,elif
