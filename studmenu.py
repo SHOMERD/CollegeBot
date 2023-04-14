@@ -852,10 +852,6 @@ E-mail: leskova-iv@opencollege-nsk.ru
                                   reply_markup=next_menu)
         def first_str_28(call): # Ссылки
             
-           
-            
-        
-          
             global bot
             
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
