@@ -1,10 +1,54 @@
 # coding=utf-8 
 
 import telebot
-bot = telebot.TeleBot("6086891510:AAHhYBpEb_as4GwFW6Hw6N_y0yLcXDksW60")
+
+bot = telebot.TeleBot("6269939624:AAGAv4FO_FD5JvfRlSSWPiednZXPesUbZhU")
+
+boolean1 = False
+boolean2 = False
+message = ''
 
 class student():
     
+    def deleting(message):
+            
+        global bot
+        global boolean1
+        
+
+        if boolean1:
+            bot.delete_message(message.chat.id, message.message_id)
+                
+                # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
+                
+            
+            
+            boolean1 = False
+            boolean2 = True
+        elif boolean2:
+
+            # определение объекта клавиатуры с кнопками
+            next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
+            # определение кнопок для клавиатуры
+            button_1 = telebot.types.InlineKeyboardButton('Скидки и виды поощрений', callback_data="sales")
+            button_2 = telebot.types.InlineKeyboardButton('Другой вопрос', callback_data="different_q")
+            button_3 = telebot.types.InlineKeyboardButton('Связаться с администрацией', callback_data="message_admin")
+            button_4 = telebot.types.InlineKeyboardButton('Наш сайт и социальные сети', callback_data="links")
+            
+            page_back = telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data='Stud_page4')
+            page_1 = telebot.types.InlineKeyboardButton(text='🔄 В начало 🔄', callback_data='Stud_page1')
+            back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
+            # добавление кнопок к клавиатуре
+            next_menu.add(button_1,button_2,button_3,button_4, page_back,page_1, back)
+            
+            print(message.chat.id)
+            bot.send_message('Меню для Студента\Родителя\nСтраница номер: 5️⃣ ', message.chat.id,
+                                reply_markup=next_menu)
+            boolean2 = False
+
+
     def elif_stud(call):
         
         def first_str_1(call): # Получить справку
@@ -809,6 +853,58 @@ E-mail: leskova-iv@opencollege-nsk.ru
         def first_str_28(call): # Ссылки
             
             global bot
+            global boolean1
+            global message
+
+            boolean1 = True
+            message = call
+
+            next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
+            button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page5")
+            
+            back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
+            next_menu.add(button_1, back)
+
+            text= "ssss            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+
+            bot.delete_message(call.message.chat.id, call.message.message_id)
+            
+            bot.send_photo(chat_id = call.message.chat.id, photo=open('photo.jpg', 'rb'), reply_markup = next_menu, caption=text)
+            
+        def deleting(call):
+            
+            global bot
+            global boolean1
+            
+            if boolean1:
+                bot.delete_message(call.message.chat.id, call.message.message_id)
+                
+                    # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
+                
+            
+                # определение объекта клавиатуры с кнопками
+                next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+            
+                # определение кнопок для клавиатуры
+                button_1 = telebot.types.InlineKeyboardButton('Скидки и виды поощрений', callback_data="sales")
+                button_2 = telebot.types.InlineKeyboardButton('Другой вопрос', callback_data="different_q")
+                button_3 = telebot.types.InlineKeyboardButton('Связаться с администрацией', callback_data="message_admin")
+                button_4 = telebot.types.InlineKeyboardButton('Наш сайт и социальные сети', callback_data="links")
+            
+                page_back = telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data='Stud_page4')
+                page_1 = telebot.types.InlineKeyboardButton(text='🔄 В начало 🔄', callback_data='Stud_page1')
+                back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+            
+                # добавление кнопок к клавиатуре
+                next_menu.add(button_1,button_2,button_3,button_4, page_back,page_1, back)
+                
+                bot.send_message('Меню для Студента\Родителя\nСтраница номер: 5️⃣ ', call.message.chat.id,
+                                  reply_markup=next_menu)
+                boolean1 = False
+            """
+            global bot
             
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
             
@@ -818,7 +914,7 @@ E-mail: leskova-iv@opencollege-nsk.ru
             
             next_menu.add(button_1, back)
             
-            text = """Наш сайт: https://opencollege-nsk.ru/
+            text = Наш сайт: https://opencollege-nsk.ru/
 
 Телеграм канал: https://t.me/opencollege_nsk
 
@@ -839,10 +935,12 @@ YouTube: https://youtube.com/@opencollege54
 ЭлЖур: https://opencollege-nsk.eljur.ru/authorize
 
 * Instagram, продукт компании Meta, которая признана экстремистской организацией в России.
-"""
+
             bot.edit_message_text(text, call.message.chat.id, call.message.message_id,
                                   reply_markup=next_menu)
-        
+        """
+
+
         # словарь заменяющий длинную цепь if,elif,elif,elif
         dict_1 = {"spravka":first_str_1,
                   "otsrochka":first_str_2,
@@ -878,6 +976,25 @@ YouTube: https://youtube.com/@opencollege54
             dict_1[call.data](call)
             
         
-
+#{'id': '3936409843713978729', 'from_user': {'id': 916516837, 'is_bot': False, 'first_name': 'Александр', 'username': 'Provonsal', 'last_name': 'Кутаков', 'language_code': 'ru', 'can_join_groups': None,
+# 'can_read_all_group_messages': None, 'supports_inline_queries': None, 'is_premium': None, 'added_to_attachment_menu': None}, 'message': {'content_type': 'photo', 'id': 318, 'message_id': 318, 'from_user': <telebot.types.User object at 0x000001ACF8C96100>, 
+# 'date': 1681490460, 'chat': <telebot.types.Chat object at 0x000001ACF8C96E20>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 
+# 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': None, 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 
+# 'photo': [<telebot.types.PhotoSize object at 0x000001ACF8C96AC0>, <telebot.types.PhotoSize object at 0x000001ACF8C96CD0>, <telebot.types.PhotoSize object at 0x000001ACF8C963A0>, <telebot.types.PhotoSize object at 0x000001ACF8C96B80>], 'sticker': None, 'video': None, 
+# 'video_note': None, 'voice': None, 'caption': 'ssss            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 
+# 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 
+# 'successful_payment': None, 'connected_website': None, 'reply_markup': <telebot.types.InlineKeyboardMarkup object at 0x000001ACF8C96430>, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 
+# 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'user_shared': None, 'chat_shared': None, 'json': {'message_id': 318, 'from': {'id': 6269939624, 'is_bot': True, 'first_name': 
+# 'Няшкабот', 'username': 'NyashkaBot_1bot'}, 'chat': {'id': 916516837, 'first_name': 'Александр', 'last_name': 'Кутаков', 'username': 'Provonsal', 'type': 'private'}, 'date': 1681490460, 'photo': [{'file_id': 'AgACAgIAAxkDAAIBPmQ5ghy8_xFOYzxcmE4U2u2xyCFSAAJtxjEb0srQSUc2yK5aG_5KAQADAgADcwADLwQ', 
+# 'file_unique_id': 'AQADbcYxG9LK0El4', 'file_size': 1411, 'width': 90, 'height': 90}, {'file_id': 'AgACAgIAAxkDAAIBPmQ5ghy8_xFOYzxcmE4U2u2xyCFSAAJtxjEb0srQSUc2yK5aG_5KAQADAgADbQADLwQ', 'file_unique_id': 'AQADbcYxG9LK0Ely', 'file_size': 15114, 'width': 320, 'height': 320}, 
+# {'file_id': 'AgACAgIAAxkDAAIBPmQ5ghy8_xFOYzxcmE4U2u2xyCFSAAJtxjEb0srQSUc2yK5aG_5KAQADAgADeQADLwQ', 'file_unique_id': 'AQADbcYxG9LK0El-', 'file_size': 50487, 'width': 1080, 'height': 1080}, {'file_id': 'AgACAgIAAxkDAAIBPmQ5ghy8_xFOYzxcmE4U2u2xyCFSAAJtxjEb0srQSUc2yK5aG_5KAQADAgADeAADLwQ', 
+# 'file_unique_id': 'AQADbcYxG9LK0El9', 'file_size': 52906, 'width': 800, 'height': 800}], 'caption': 'ssss            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 'reply_markup': {'inline_keyboard': [[{'text': '🔙 Назад 🔙', 'callback_data': 'Stud_page5'}],
+#  [{'text': '📱 В меню 📱', 'callback_data': 'mainmenu'}]]}}}, 'inline_message_id': None, 'chat_instance': '-2648538083081636582', 'data': 'Stud_page5', 'game_short_name': None, 'json': {'id': '3936409843713978729', 'from': 
+#  {'id': 916516837, 'is_bot': False, 'first_name': 'Александр', 'last_name': 'Кутаков', 'username': 'Provonsal', 'language_code': 'ru'}, 'message': {'message_id': 318, 'from': {'id': 6269939624, 'is_bot': True, 'first_name': 'Няшкабот', 'username': 'NyashkaBot_1bot'}, 
+#  'chat': {'id': 916516837, 'first_name': 'Александр', 'last_name': 'Кутаков', 'username': 'Provonsal', 'type': 'private'}, 'date': 1681490460, 'photo': [{'file_id': 'AgACAgIAAxkDAAIBPmQ5ghy8_xFOYzxcmE4U2u2xyCFSAAJtxjEb0srQSUc2yK5aG_5KAQADAgADcwADLwQ', 'file_unique_id': 
+#  'AQADbcYxG9LK0El4', 'file_size': 1411, 'width': 90, 'height': 90}, {'file_id': 'AgACAgIAAxkDAAIBPmQ5ghy8_xFOYzxcmE4U2u2xyCFSAAJtxjEb0srQSUc2yK5aG_5KAQADAgADbQADLwQ', 'file_unique_id': 'AQADbcYxG9LK0Ely', 'file_size': 15114, 'width': 320, 'height': 320}, {'file_id': 
+#  'AgACAgIAAxkDAAIBPmQ5ghy8_xFOYzxcmE4U2u2xyCFSAAJtxjEb0srQSUc2yK5aG_5KAQADAgADeQADLwQ', 'file_unique_id': 'AQADbcYxG9LK0El-', 'file_size': 50487, 'width': 1080, 'height': 1080}, {'file_id': 'AgACAgIAAxkDAAIBPmQ5ghy8_xFOYzxcmE4U2u2xyCFSAAJtxjEb0srQSUc2yK5aG_5KAQADAgADeAADLwQ', 
+#  'file_unique_id': 'AQADbcYxG9LK0El9', 'file_size': 52906, 'width': 800, 'height': 800}], 'caption': 'ssss            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 'reply_markup': {'inline_keyboard': [[{'text': '🔙 Назад 🔙', 'callback_data': 
+#  'Stud_page5'}], [{'text': '📱 В меню 📱', 'callback_data': 'mainmenu'}]]}}, 'chat_instance': '-2648538083081636582', 'data': 'Stud_page5'}}
 
 

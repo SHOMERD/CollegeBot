@@ -1,7 +1,7 @@
 # coding=utf-8 
 
 import telebot
-bot = telebot.TeleBot("6086891510:AAHhYBpEb_as4GwFW6Hw6N_y0yLcXDksW60")
+bot = telebot.TeleBot("6269939624:AAGAv4FO_FD5JvfRlSSWPiednZXPesUbZhU")
 
 class student_menu():
     
