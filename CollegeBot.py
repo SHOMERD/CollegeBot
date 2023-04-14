@@ -8,18 +8,12 @@ from sotrmenu import sotrud
 from sotrudmenpages import sotrud_menu
 import telebot
 
-bot = telebot.TeleBot("6269939624:AAGAv4FO_FD5JvfRlSSWPiednZXPesUbZhU")
-
-
-
-message1 = {}
+bot = telebot.TeleBot("6086891510:AAHhYBpEb_as4GwFW6Hw6N_y0yLcXDksW60")
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
     
-    global message1
-
     markup = telebot.types.InlineKeyboardMarkup(row_width = 1)
     
     button_studRod = telebot.types.InlineKeyboardButton(text='Студент/Родитель', callback_data='Stud_page1')
@@ -27,15 +21,11 @@ def start(message):
     button_abitr = telebot.types.InlineKeyboardButton(text='Абитуриент/Родитель абитуриента', callback_data="Abitur_page1")
     
     markup.add(button_studRod, button_abitr, button_sotr, )
-    message1 = message.chat.id
+    
     bot.send_message(message.chat.id, 'Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?', reply_markup = markup)
     
 @bot.callback_query_handler(func=lambda call: True)
 def menu(call):
-    
-    global message1
-
-    print(message1)
     
     if call.data == 'mainmenu': # Главное меню
         
@@ -60,11 +50,5 @@ def menu(call):
     abitur.abitur_bum(call)    
     
     sotrud.elif_sotr(call)
-
-@bot.callback_query_handler(func=lambda call: True)
-def test1(call):
-
-    student.deleting(call)
-
 
 bot.polling(none_stop=True)
