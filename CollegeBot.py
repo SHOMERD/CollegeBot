@@ -24,6 +24,7 @@ def start(message):
     
     bot.send_message(message.chat.id, 'Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?', reply_markup = markup)
     
+    
 @bot.callback_query_handler(func=lambda call: True)
 def menu(call):
     
@@ -50,5 +51,6 @@ def menu(call):
     abitur.abitur_bum(call)    
     
     sotrud.elif_sotr(call)
+
 
 bot.polling(none_stop=True)
