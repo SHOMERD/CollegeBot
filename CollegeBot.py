@@ -6,9 +6,10 @@ from abiturmenu import abitur
 from abiturpages import abitur_menu
 from sotrmenu import sotrud
 from sotrudmenpages import sotrud_menu
+from tbot import bot
 import telebot
 
-bot = telebot.TeleBot("6086891510:AAHhYBpEb_as4GwFW6Hw6N_y0yLcXDksW60")
+
 
 
 @bot.message_handler(commands=['start'])

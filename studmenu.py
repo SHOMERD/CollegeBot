@@ -1,8 +1,8 @@
 # coding=utf-8 
 
 import telebot
+from tbot import bot
 
-bot = telebot.TeleBot("6086891510:AAHhYBpEb_as4GwFW6Hw6N_y0yLcXDksW60")
 
 boolean1 = False
 boolean2 = False
