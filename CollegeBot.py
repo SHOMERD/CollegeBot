@@ -7,13 +7,16 @@ from abiturpages import abitur_menu
 from sotrmenu import sotrud
 from sotrudmenpages import sotrud_menu
 from tbot import bot
+from tbot import current_time
 import telebot
 
-#ssss
+
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    
+    bot.send_message(-1001822755040, '{} \n<{}> <{}> <{}> <{}>\n\n Стартанул Бота (написал /start)'.format(current_time, message.from_user.id, message.from_user.first_name, message.from_user.last_name, message.from_user.username))
     
     markup = telebot.types.InlineKeyboardMarkup(row_width = 1)
     
@@ -30,6 +33,8 @@ def start(message):
 def menu(call):
     
     if call.data == 'mainmenu': # Главное меню
+        
+        bot.send_message(-1001822755040, '{} \n<{}> <{}> <{}> <{}>\n\n Вернулся в Главное меню'.format(current_time, call.from_user.id, call.from_user.first_name, call.from_user.last_name,call.from_user.username))
         
         mainmenu = telebot.types.InlineKeyboardMarkup(row_width = 1)
         

@@ -1,8 +1,8 @@
 # coding=utf-8 
 
-import telebot
 from tbot import bot
-
+from tbot import current_time
+import telebot
 
 
 class abitur_menu():
@@ -91,7 +91,9 @@ class abitur_menu():
                      }       
         
         if call.data in abitur_page:
+            
             abitur_page[call.data](call)
+            bot.send_message(-1001822755040, '{} \n<{}> <{}> <{}> <{}>\n\n Открыл страницу {} меню Абитуриента/Родителя абитуриента'.format(current_time, call.from_user.id, call.from_user.first_name, call.from_user.last_name,call.from_user.username, call.data))
 
 
 

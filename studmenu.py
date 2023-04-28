@@ -1,8 +1,8 @@
 # coding=utf-8 
 
-import telebot
 from tbot import bot
-
+from tbot import current_time
+import telebot
 
 boolean1 = False
 boolean2 = False
@@ -921,7 +921,9 @@ YouTube: https://youtube.com/@opencollege54
                   }  
         
         if call.data in dict_1:
+            
             dict_1[call.data](call)
+            bot.send_message(-1001822755040, '{} \n<{}> <{}> <{}> <{}>\n\n Зашел в раздел {} меню Студента/Родителя'.format(current_time, call.from_user.id, call.from_user.first_name, call.from_user.last_name,call.from_user.username, call.data))
             
         
 #{'id': '3936409843713978729', 'from_user': {'id': 916516837, 'is_bot': False, 'first_name': 'Александр', 'username': 'Provonsal', 'last_name': 'Кутаков', 'language_code': 'ru', 'can_join_groups': None,
