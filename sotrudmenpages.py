@@ -96,7 +96,7 @@ class sotrud_menu():
         if call.data in Sotrud_page:
             
             Sotrud_page[call.data](call)
-            bot.send_message(-1001822755040, '{} \n<{}> <{}> <{}> <{}>\n\n Открыл страницу {} меню Сотрудника/Преподавателя'.format(current_time, call.from_user.id, call.from_user.first_name, call.from_user.last_name,call.from_user.username, call.data))
+            bot.send_message(-1001822755040, '{} \n<{}> <{}> <{}> <{}>\n\n Открыл страницу <{}> меню Сотрудника/Преподавателя'.format(current_time, call.from_user.id, call.from_user.first_name, call.from_user.last_name,call.from_user.username, call.data))
 
 
 
