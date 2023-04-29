@@ -801,7 +801,7 @@ YouTube: https://youtube.com/@opencollege54
         if call.data in dict_1:
             
             dict_1[call.data](call)
-            bot.send_message(-1001822755040, '{} \n<{}> <{}> <{}> <{}>\n\n Зашел в раздел <{}> меню Абитуриента/Родителя абитруриента'.format(current_time, call.from_user.id, call.from_user.first_name, call.from_user.last_name,call.from_user.username, call.data))
+            bot.send_message(-1001822755040, '{} \n<{}> <{}> <{}> <{}>\n\n Зашел в раздел <{}> меню Абитуриента/Родителя абитруриента'.format(current_time(), call.from_user.id, call.from_user.first_name, call.from_user.last_name,call.from_user.username, call.data))
 
 
 
