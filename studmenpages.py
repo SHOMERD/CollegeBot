@@ -98,7 +98,7 @@ class student_menu():
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         
             # определение кнопок для клавиатуры
-            button_1 = telebot.types.InlineKeyboardButton('Список сотрудников', callback_data="employers")
+            button_1 = telebot.types.InlineKeyboardButton('Список сотрудников', callback_data="employee")
             button_2 = telebot.types.InlineKeyboardButton('Консультация психолога', callback_data="psixolog")
             button_3 = telebot.types.InlineKeyboardButton('Самоуправление', callback_data="self_control")
             button_4 = telebot.types.InlineKeyboardButton('Потерял/нашел вещь', callback_data="find_or_lost")

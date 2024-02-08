@@ -909,7 +909,7 @@ YouTube: https://youtube.com/@opencollege54
                   "message_teacher":first_str_17,
                   "el_jur":first_str_18,
                   "transport_card":first_str_19,
-                  "employers":first_str_20,
+                  "employee":first_str_20,
                   "psixolog":first_str_21,
                   "self_control":first_str_22,
                   "find_or_lost":first_str_23,
