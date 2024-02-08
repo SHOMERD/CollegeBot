@@ -21,13 +21,13 @@ class StudentMenu():
         buttons = self.false_generator_buttons(self.buttons)
         for i, v in enumerate(buttons):
             if i == 6:
-
+                pass
         if len(self.buttons)== 6 :
             page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Stud_page2')
             page_back = telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data='Stud_page1')
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
         else:
-
+            pass
 
 bruh = StudentMenu(('Получить справку',
                     'Отсрочка от армии',
