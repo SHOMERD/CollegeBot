@@ -9,27 +9,39 @@ class StudentMenu():
     def __init__(self, buttons):
         self.buttons = (buttons)
         self.generated_buttons = []
-        self.page = 1
+        self.next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
 
-    def false_generator_buttons(self):
+    def generator_buttons(self):
         for v in self.buttons:
-            yield self.generated_buttons.append(telebot.types.InlineKeyboardButton(v, callback_data=v))
+            return telebot.types.InlineKeyboardButton(v, callback_data=v)
          
     
-    def pager(self):
-        menu = list(self.false_generator_buttons() for i in range(len(self.buttons)))
+    def pager(self, page = 1):
+        menu = list(self.generator_buttons() for i in range(len(self.buttons)))
         menu_len = len(menu)
         max_page = math.ceil(menu_len // 6)
         min_page = 1
+        menu_buttons_generated = list()
         for i, v in enumerate(menu):
+            menu_buttons_generated.append(menu.pop(i))
             if i == 5:
-                if self.page == min_page:
-                    page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'Stud_page{self.page + 1}')
-                   
-                    back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
-                elif self.page == max_page:
-                    page_back = telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'Stud_page1')
-                    back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+                
+                if page == min_page:
+                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'Stud_page{min_page + 1}'))
+                    break
+                elif page == max_page:
+                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'Stud_page{max_page - 1}'))
+                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='🔄 В начало 🔄', callback_data=f'Stud_page{min_page}'))
+                    break
+                else:
+                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'Stud_page{page + 1}'))
+                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'Stud_page{page + 1}'))
+                    break
+                    
+        menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
+        for i in menu_buttons_generated:
+            self.next_menu.add(i)
+        return self.next_menu
         
 
 bruh = StudentMenu(('Получить справку',
@@ -61,7 +73,7 @@ bruh = StudentMenu(('Получить справку',
                     'Связаться с администрацией',
                     'Наш сайт и социальные сети'
                     ))
-
+bruh.pager(2)
 
 class student_menu():
     
