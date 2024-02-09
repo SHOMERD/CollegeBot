@@ -1,33 +1,36 @@
 # coding=utf-8 
 
+import math
+import telebot
 from tbot import bot
 from tbot import current_time
-import telebot
 
 class StudentMenu():
     def __init__(self, buttons):
         self.buttons = (buttons)
         self.generated_buttons = []
+        self.page = 1
 
     def false_generator_buttons(self):
-        buttons = list()
         for v in self.buttons:
-            
-            buttons.append(telebot.types.InlineKeyboardButton(v, callback_data=v))
-        self.generated_buttons = buttons
+            yield self.generated_buttons.append(telebot.types.InlineKeyboardButton(v, callback_data=v))
+         
     
     def pager(self):
-
-        buttons = self.false_generator_buttons(self.buttons)
-        for i, v in enumerate(buttons):
-            if i == 6:
-                pass
-        if len(self.buttons)== 6 :
-            page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Stud_page2')
-            page_back = telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data='Stud_page1')
-            back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
-        else:
-            pass
+        menu = list(self.false_generator_buttons() for i in range(len(self.buttons)))
+        menu_len = len(menu)
+        max_page = math.ceil(menu_len // 6)
+        min_page = 1
+        for i, v in enumerate(menu):
+            if i == 5:
+                if self.page == min_page:
+                    page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'Stud_page{self.page + 1}')
+                   
+                    back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+                elif self.page == max_page:
+                    page_back = telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'Stud_page1')
+                    back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
+        
 
 bruh = StudentMenu(('Получить справку',
                     'Отсрочка от армии',
