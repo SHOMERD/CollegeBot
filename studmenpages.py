@@ -5,11 +5,12 @@ import telebot
 from tbot import bot
 from tbot import current_time
 
-class StudentMenu():
-    def __init__(self, buttons):
-        self.buttons = (buttons)
+class MenuPages():
+    def __init__(self, buttons, identity = 'student'):
+        self.buttons = buttons
         self.generated_buttons = []
         self.next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+        self.identity = identity
 
     def generator_buttons(self):
         for v in self.buttons:
@@ -27,15 +28,15 @@ class StudentMenu():
             if i == 5:
                 
                 if page == min_page:
-                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'Stud_page{min_page + 1}'))
+                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'{self.identity}_page{page + 1}'))
                     break
                 elif page == max_page:
-                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'Stud_page{max_page - 1}'))
-                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='🔄 В начало 🔄', callback_data=f'Stud_page{min_page}'))
+                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'{self.identity}_page{page - 1}'))
+                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='🔄 В начало 🔄', callback_data=f'{self.identity}_page{min_page}'))
                     break
                 else:
-                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'Stud_page{page + 1}'))
-                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'Stud_page{page + 1}'))
+                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'{self.identity}_page{page + 1}'))
+                    menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'{self.identity}_page{page + 1}'))
                     break
                     
         menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
@@ -44,7 +45,15 @@ class StudentMenu():
         return self.next_menu
         
 
-bruh = StudentMenu(('Получить справку',
+
+
+class student_menu():
+    
+    def __init__(self, bot, call):
+        self.bot = bot
+        self.chat_id = call.message.chat.id
+        self.message_id = call.message.message_id
+        self.pages = ('Получить справку',
                     'Отсрочка от армии',
                     'Расписание занятий',
                     'Расписание звонков',
@@ -72,38 +81,22 @@ bruh = StudentMenu(('Получить справку',
                     'Другой вопрос',
                     'Связаться с администрацией',
                     'Наш сайт и социальные сети'
-                    ))
-bruh.pager(2)
+                    )
+        self.number_in_sqare = ('1️⃣', '2️⃣', '3️⃣', '4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟')
 
-class student_menu():
     
+    def bot_menu_pager(self, page = 1): 
+            
+        menu = MenuPages(self.pages)
+        page_buttons = menu.pager(page)
+        bot.edit_message_text(f'Меню для Студента/Родителя\nСтраница номер: {self.number_in_sqare[page-1]} ',
+                              self.chat_id,
+                              self.message_id,
+                              reply_markup=page_buttons)
+
     def elif_studmenupage(call):
 
-        def menu_page1(call):  # страница меню студента 1
             
-            # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
-            global bot
-            
-            # определение объекта клавиатуры с кнопками
-            next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
-            
-            # определение кнопок для клавиатуры
-            button_1 = telebot.types.InlineKeyboardButton('Получить справку', callback_data="spravka")
-            button_2 = telebot.types.InlineKeyboardButton('Отсрочка от армии', callback_data="otsrochka")
-            button_3 = telebot.types.InlineKeyboardButton('Расписание занятий', callback_data="rasp zanyat")
-            button_4 = telebot.types.InlineKeyboardButton('Расписание звонков', callback_data="rasp zvon")
-            button_5 = telebot.types.InlineKeyboardButton('Оплатить обучение', callback_data="oplata")
-            button_6 = telebot.types.InlineKeyboardButton('Узнать задолженность (финансовую)', callback_data="dolg_money")
-            
-            page_next = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data='Stud_page2')
-            back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
-            
-            # добавление кнопок к клавиатуре
-            next_menu.add(button_1,button_2,button_3,button_4,button_5,button_6, page_next, back)
-           
-            # редактирование сообщения с добавлением к нему кнопок
-            bot.edit_message_text('Меню для Студента/Родителя\nСтраница номер: 1️⃣ ', call.message.chat.id, call.message.message_id,
-                                  reply_markup=next_menu)    
         
         def menu_page2(call):  # страница меню студента 2
             
