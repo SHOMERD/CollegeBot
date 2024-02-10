@@ -1,7 +1,7 @@
 # coding=utf-8 
 
 from studmenu import student
-from studmenpages import student_menu
+from studmenpages import Menu
 from abiturmenu import abitur
 from abiturpages import abitur_menu
 from sotrmenu import sotrud
@@ -11,7 +11,35 @@ from tbot import current_time
 import telebot
 
 
-
+page_names = {'Stud': ('Получить справку',
+                    'Отсрочка от армии',
+                    'Расписание занятий',
+                    'Расписание звонков',
+                    'Оплатить обучение',
+                    'Узнать задолженность (финансовую)',
+                    'Узнать долги/пересдать сессию',
+                    'Заочное обучение',
+                    'Практика',
+                    'Афиша мероприятий',
+                    'Внеучебные траектории и клубы',
+                    'Дополнительное образование',
+                    'Второй диплом',
+                    'Учебные планы',
+                    'Электронная библиотека',
+                    'Связаться с преподавателем',
+                    'Доступ в ЭлЖур',
+                    'Транспортная карта',
+                    'Список сотрудников',
+                    'Консультация психолога',
+                    'Самоуправление',
+                    'Потерял/нашел вещь',
+                    'Правила внутреннего распорядка',
+                    'Пропускной режим',
+                    'Скидки и виды поощрений',
+                    'Другой вопрос',
+                    'Связаться с администрацией',
+                    'Наш сайт и социальные сети'
+                    )}
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -40,15 +68,17 @@ def menu(call):
         
             mainmenu = telebot.types.InlineKeyboardMarkup(row_width = 1)
         
-            button_studRod = telebot.types.InlineKeyboardButton(text='Студент/Родитель', callback_data='Stud_page1')
-            button_sotr = telebot.types.InlineKeyboardButton(text='Сотрудник/Преподаватель', callback_data="Sotr_page1")
-            button_abitr = telebot.types.InlineKeyboardButton(text='Абитуриент/Родитель абитуриента', callback_data="Abitur_page1")
+            button_studRod = telebot.types.InlineKeyboardButton(text='Студент/Родитель', callback_data='Stud')
+            button_sotr = telebot.types.InlineKeyboardButton(text='Сотрудник/Преподаватель', callback_data="Sotr")
+            button_abitr = telebot.types.InlineKeyboardButton(text='Абитуриент/Родитель абитуриента', callback_data="Abitur")
         
             mainmenu.add(button_studRod, button_abitr,button_sotr, )
         
             bot.edit_message_text("Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?", call.message.chat.id, call.message.message_id, reply_markup=mainmenu)
     
-        student_menu.elif_studmenupage(call)
+        if call.data == 'Stud' or call.data == 'Sotr' or call.data == 'Abitur':
+            Menu(call, bot, page_names[call.data], call.data)
+            
     
         abitur_menu.elif_abitur(call)
     
