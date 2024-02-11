@@ -11,6 +11,7 @@ class MenuPages():
         self.next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         self.identity = identity
         self.bot = bot
+        print(buttons)
 
     
     def pager(self, page = 1):
@@ -31,6 +32,7 @@ class MenuPages():
         print(menu_page[page-1])
         menu_buttons_generated = list()
         for i, v in enumerate(menu_page[page-1]):
+            print()
             menu_buttons_generated.append(v)
             if i == 5 :
                 
@@ -48,6 +50,7 @@ class MenuPages():
                     
         menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
         for i in menu_buttons_generated:
+            
             self.next_menu.add(i)
         
         return self.next_menu
@@ -60,7 +63,7 @@ class Menu():
         self.call = call
         self.chat_id = call.message.chat.id
         self.message_id = call.message.message_id
-        self.who_is = who_is[:-6]
+        self.who_is = who_is
         self.pages = pages
         self.number_in_sqare = ('1️⃣', '2️⃣', '3️⃣', '4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟')
 
@@ -68,13 +71,14 @@ class Menu():
     def bot_menu_pager(self, page = 1): 
         
         personality = {'Stud': 'Студента\Родителя', 'Sotr':'Сотрудника\Преподавателя', 'Abitur':'Абитуриента\Родителя абитуриента'}
-        menu = MenuPages(self.pages, self.bot, self.who_is)
-        menu = menu.pager(page)
-        self.bot.edit_message_text(f'Меню для {personality.get(self.who_is)}\nСтраница номер: {self.number_in_sqare[page-1]} ',
-                              self.chat_id,
-                              self.message_id,
-                              reply_markup=menu)
-        del menu
+        self.menu = MenuPages(self.pages, self.bot, self.who_is)
+        self.menu = self.menu.pager(page)
+        
+        self.bot.edit_message_text(f'Меню для {personality.get(self.who_is)}\nСтраница номер: {self.number_in_sqare[page-1]}',
+                              916516837,
+                              631,
+                              reply_markup=self.menu)
+        
 
     def сall_menupage(self):
 

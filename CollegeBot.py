@@ -41,23 +41,26 @@ def menu(call):
         mainmenu.add(button_studRod, button_abitr,button_sotr)
         
         bot.edit_message_text("Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?", call.message.chat.id, call.message.message_id, reply_markup=mainmenu)
-        
+    print(call.data)    
     if '_page' in call.data:
-        menuг = Menu(bot, call, page_names[call.data[:-6]], call.data)
+        print(1, call.data[:-6])
+        menuг = Menu(bot, call, page_names[call.data[:-6]], call.data[:-6])
         print(call.data)    
         menuг.bot_menu_pager(int(call.data[-1]))
-    elif 'Stud_' in call.data:
-        names = page_names.get(call.data[:4])
-        number = 0
-        for i in names:
-            number +=1
-            if i == call.data[4:]:
-                break
-        section = SectionChooser(bot, call, call.data[:4], number)
-    elif 'Sotr_' in call.data:
-        pass
-    else:
-        pass
+    #elif 'Stud_' in call.data:
+    #    names = page_names.get(call.data[:4])
+    #    number = 0
+    #    for i in names:
+    #        number +=1
+    #        if i == call.data[4:]:
+    #            break
+    #    additional_button = [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0]
+    #    print(number, additional_button[number-1])
+    #    section = SectionChooser(bot, call, call.data[:4], number, additional_button[number-1])
+    #elif 'Sotr_' in call.data:
+    #    pass
+    #else:
+    #    pass
 
 
 bot.polling(none_stop=True)

@@ -11,11 +11,14 @@ class SectionChooser():
         self.identity = identity
         self.page_numbers = number
 
-    def section(self):
+    def section(self, url, text_url):
         next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         menu_buttons_generated = list()
+        if self.additional_section:
+            menu_buttons_generated.append(telebot.types.InlineKeyboardButton('', url=''))
         menu_buttons_generated.append(telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page1"))
         #telebot.types.InlineKeyboardButton('Заказать справку', url="https://opencollege-nsk.ru/live/#extract")
             
         menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
-        next_menu.add()    
+        next_menu.add()  
+        return next_menu
