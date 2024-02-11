@@ -46,10 +46,12 @@ def menu(call):
         menuг = Menu(bot, call, page_names[call.data[:-6]], call.data)
         print(call.data)    
         menuг.bot_menu_pager(int(call.data[-1]))
-        
-    
-   
-    
+    elif 'Stud_' in call.data:
+        pass
+    elif 'Sotr_' in call.data:
+        pass
+    else:
+        pass
 
 
 bot.polling(none_stop=True)

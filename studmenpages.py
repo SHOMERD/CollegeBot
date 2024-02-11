@@ -13,7 +13,7 @@ class MenuPages():
 
     
     def pager(self, page = 1):
-        menu = [telebot.types.InlineKeyboardButton(v, callback_data=v) for v in self.buttons]
+        menu = [telebot.types.InlineKeyboardButton(v, callback_data=f'{self.identity}_{v}') for v in self.buttons]
         menu_len = len(menu)
         max_page = math.ceil(menu_len // 6)
         min_page = 1
