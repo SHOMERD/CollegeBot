@@ -1,6 +1,6 @@
 # coding=utf-8 
 
-
+from SectionChooser import SectionChooser
 from studmenpages import Menu
 from tbot import bot, page_names
 from tbot import current_time
@@ -47,7 +47,13 @@ def menu(call):
         print(call.data)    
         menuг.bot_menu_pager(int(call.data[-1]))
     elif 'Stud_' in call.data:
-        pass
+        names = page_names.get(call.data[:4])
+        number = 0
+        for i in names:
+            number +=1
+            if i == call.data[4:]:
+                break
+        section = SectionChooser(bot, call, call.data[:4], number)
     elif 'Sotr_' in call.data:
         pass
     else:

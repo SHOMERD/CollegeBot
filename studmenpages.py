@@ -5,11 +5,12 @@ import telebot
 from tbot import current_time
 
 class MenuPages():
-    def __init__(self, buttons, identity = 'Stud'):
+    def __init__(self, buttons,  bot, identity = 'Stud'):
         self.buttons = buttons
         self.generated_buttons = []
         self.next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         self.identity = identity
+        self.bot = bot
 
     
     def pager(self, page = 1):
@@ -67,7 +68,7 @@ class Menu():
     def bot_menu_pager(self, page = 1): 
         
         personality = {'Stud': 'Студента\Родителя', 'Sotr':'Сотрудника\Преподавателя', 'Abitur':'Абитуриента\Родителя абитуриента'}
-        menu = MenuPages(self.pages, self.who_is)
+        menu = MenuPages(self.pages, self.bot, self.who_is)
         menu = menu.pager(page)
         self.bot.edit_message_text(f'Меню для {personality.get(self.who_is)}\nСтраница номер: {self.number_in_sqare[page-1]} ',
                               self.chat_id,
