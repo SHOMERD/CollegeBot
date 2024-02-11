@@ -10,43 +10,8 @@ message = ''
 
 class student():
     
-    def deleting(message):
-            
-        global bot
-        global boolean1
+    
         
-
-        if boolean1:
-            bot.delete_message(message.chat.id, message.message_id)
-                
-                # определение бот глобальной переменной чтобы мы могли ей воспользоваться и ссылаться
-                
-            
-            
-            boolean1 = False
-            boolean2 = True
-        elif boolean2:
-
-            # определение объекта клавиатуры с кнопками
-            next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
-            
-            # определение кнопок для клавиатуры
-            button_1 = telebot.types.InlineKeyboardButton('Скидки и виды поощрений', callback_data="sales")
-            button_2 = telebot.types.InlineKeyboardButton('Другой вопрос', callback_data="different_q")
-            button_3 = telebot.types.InlineKeyboardButton('Связаться с администрацией', callback_data="message_admin")
-            button_4 = telebot.types.InlineKeyboardButton('Наш сайт и социальные сети', callback_data="links")
-            
-            page_back = telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data='Stud_page4')
-            page_1 = telebot.types.InlineKeyboardButton(text='🔄 В начало 🔄', callback_data='Stud_page1')
-            back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
-            
-            # добавление кнопок к клавиатуре
-            next_menu.add(button_1,button_2,button_3,button_4, page_back,page_1, back)
-            
-            print(message.chat.id)
-            bot.send_message('Меню для Студента\Родителя\nСтраница номер: 5️⃣ ', message.chat.id,
-                                reply_markup=next_menu)
-            boolean2 = False
 
 
     def elif_stud(call):

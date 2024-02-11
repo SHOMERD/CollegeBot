@@ -2,7 +2,6 @@
 
 import math
 import telebot
-from tbot import bot
 from tbot import current_time
 
 class MenuPages():
@@ -12,10 +11,6 @@ class MenuPages():
         self.next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         self.identity = identity
 
-    #def generator_buttons(self):
-    #    generated = (telebot.types.InlineKeyboardButton(v, callback_data=v) for v in self.buttons)
-    #    return generated
-         
     
     def pager(self, page = 1):
         menu = [telebot.types.InlineKeyboardButton(v, callback_data=v) for v in self.buttons]
@@ -53,7 +48,7 @@ class MenuPages():
         menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
         for i in menu_buttons_generated:
             self.next_menu.add(i)
-        del menu_buttons_generated
+        
         return self.next_menu
         
 
@@ -74,7 +69,7 @@ class Menu():
         personality = {'Stud': 'Студента\Родителя', 'Sotr':'Сотрудника\Преподавателя', 'Abitur':'Абитуриента\Родителя абитуриента'}
         menu = MenuPages(self.pages, self.who_is)
         menu = menu.pager(page)
-        bot.edit_message_text(f'Меню для {personality.get(self.who_is)}\nСтраница номер: {self.number_in_sqare[page-1]} ',
+        self.bot.edit_message_text(f'Меню для {personality.get(self.who_is)}\nСтраница номер: {self.number_in_sqare[page-1]} ',
                               self.chat_id,
                               self.message_id,
                               reply_markup=menu)
@@ -94,7 +89,7 @@ class Menu():
             page = int(self.call.data[-1])
             print(page)
             self.bot_menu_pager(page)
-            bot.send_message(-1001822755040, f'{current_time()} \n<{self.call.from_user.id}> <{self.call.from_user.first_name}> <{self.call.from_user.last_name}> <{self.call.from_user.username}>\n\n Открыл страницу <{self.call.data}> меню Студента/Родителя')
+            self.bot.send_message(-1001822755040, f'{current_time()} \n<{self.call.from_user.id}> <{self.call.from_user.first_name}> <{self.call.from_user.last_name}> <{self.call.from_user.username}>\n\n Открыл страницу <{self.call.data}> меню Студента/Родителя')
         else:
             self.bot_menu_pager(1)
             
