@@ -47,20 +47,20 @@ def menu(call):
         menuг = Menu(bot, call, page_names.get(call.data[:-6]), call.data[:-6])
         print(call.data)    
         menuг.bot_menu_pager(int(call.data[-1]))
-    #elif 'Stud_' in call.data:
-    #    names = page_names.get(call.data[:4])
-    #    number = 0
-    #    for i in names:
-    #        number +=1
-    #        if i == call.data[4:]:
-    #            break
-    #    additional_button = [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0]
-    #    print(number, additional_button[number-1])
-    #    section = SectionChooser(bot, call, call.data[:4], number, additional_button[number-1])
-    #elif 'Sotr_' in call.data:
-    #    pass
-    #else:
-    #    pass
+    elif 'Stud_' in call.data:
+        names = (page_names.get(call.data[:4]))[0]
+        number = 0
+        for i in names:
+            number +=1
+            if i == call.data[4:]:
+                break
+        additional_button_bool = [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0]
+        print(number, additional_button_bool[number-1])
+        section = SectionChooser(bot, call, call.data[:4], number, additional_button_bool[number-1])
+    elif 'Sotr_' in call.data:
+        pass
+    else:
+        pass
 
 
 bot.polling(none_stop=True)

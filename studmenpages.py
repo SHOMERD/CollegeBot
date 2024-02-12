@@ -26,7 +26,9 @@ class MenuPages():
             # В ТО ВРЕМЯ КАК РУССКИЕ ПО 2 БАЙТА НА СИМВОЛ
 
             gggg = self.identity+'_'+callback 
-            #print(gggg, type(gggg), len(gggg.encode("utf8")), len(self.identity.encode("utf8")), len(callback.encode("utf8")))
+            # расскоментируй строку с принтом если надо проверить коллбек, тип данных коллбека,
+            # вес маркера идентификации (self.identity), и вес коллбека
+            # print(gggg, type(gggg), len(gggg.encode("utf8")), len(self.identity.encode("utf8")), len(callback.encode("utf8")))
             menu.append(telebot.types.InlineKeyboardButton(text, callback_data=gggg))
         
         
