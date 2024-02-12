@@ -12,6 +12,37 @@ def current_time():
 
 page_names = {
               'Stud': (
+                  ( # callbacks
+                    "spravka",
+                    "otsrochka",
+                    "rasp zanyat",
+                    "rasp zvon",
+                    "message_admin",
+                    "oplata",
+                    "dolg_money",
+                    "dolg_not_money",
+                    "distance",
+                    "practice",
+                    "afisha",
+                    "clubs",
+                    "dop_obrazov1",
+                    "dop_obrazov2",
+                    "study_plans",
+                    "el_library",
+                    "message_teacher",
+                    "el_jur",
+                    "transport_card",
+                    "employee",
+                    "psixolog",
+                    "self_control",
+                    "find_or_lost",
+                    "rules",
+                    "kpp",
+                    "sales",
+                    "different_q",
+                    "links"
+                  ),
+                  ( # текст для кнопок
                     'Получить справку',
                     'Отсрочка от армии',
                     'Расписание занятий',
@@ -40,7 +71,7 @@ page_names = {
                     'Другой вопрос',
                     'Связаться с администрацией',
                     'Наш сайт и социальные сети'
-                    ),
+                    )),
               'Sotr': (
                     'Расписание занятий',
                     'Расписание звонков',
@@ -79,5 +110,31 @@ page_names = {
                     'Наш сайт и социальные сети'
                     )}
 
-
-
+callBacks = ("spravka",
+             "otsrochka",
+             "rasp zanyat",
+             "rasp zvon",
+             "message_admin",
+             "oplata",
+             "dolg_money",
+             "dolg_not_money",
+             "distance",
+             "practice",
+             "afisha",
+             "clubs",
+             "dop_obrazov1",
+             "dop_obrazov2",
+             "study_plans",
+             "el_library",
+             "message_teacher",
+             "el_jur",
+             "transport_card",
+             "employee",
+             "psixolog",
+             "self_control",
+             "find_or_lost",
+             "rules",
+             "kpp",
+             "sales",
+             "different_q",
+             "links")

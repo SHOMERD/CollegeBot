@@ -2,11 +2,13 @@
 
 import math
 import telebot
+import os
 from tbot import current_time
 
 class MenuPages():
     def __init__(self, buttons,  bot, identity = 'Stud'):
-        self.buttons = buttons
+        self.buttons_text = buttons[1]
+        self.buttons_callback = buttons[0]
         self.generated_buttons = []
         self.next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         self.identity = identity
@@ -15,7 +17,20 @@ class MenuPages():
 
     
     def pager(self, page = 1):
-        menu = [telebot.types.InlineKeyboardButton(v, callback_data=f'{self.identity}_{v}') for v in self.buttons]
+        
+        menu = list()
+        for text, callback in zip(self.buttons_text, self.buttons_callback):
+
+            # ВНИМАНИЕ, ЕСЛИ ТЕКСТ КОЛЛБЕКА > 64 БАЙТ ТО ВЫДАСТ ОШИБКУ
+            # ЛУЧШЕ ИСПОЛЬЗОВАТЬ АНГЛИЙСКИЕ СИМВОЛЫ, ТАК КАК ОНИ ИСПОЛЬЗУЮТ 1 БАЙТ НА СИМВОЛ
+            # В ТО ВРЕМЯ КАК РУССКИЕ ПО 2 БАЙТА НА СИМВОЛ
+
+            gggg = self.identity+'_'+callback 
+            #print(gggg, type(gggg), len(gggg.encode("utf8")), len(self.identity.encode("utf8")), len(callback.encode("utf8")))
+            menu.append(telebot.types.InlineKeyboardButton(text, callback_data=gggg))
+        
+        
+        
         menu_len = len(menu)
         max_page = math.ceil(menu_len // 6)
         min_page = 1
@@ -75,8 +90,8 @@ class Menu():
         self.menu = self.menu.pager(page)
         
         self.bot.edit_message_text(f'Меню для {personality.get(self.who_is)}\nСтраница номер: {self.number_in_sqare[page-1]}',
-                              916516837,
-                              631,
+                              self.chat_id,
+                              self.message_id,
                               reply_markup=self.menu)
         
 
