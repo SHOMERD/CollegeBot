@@ -34,7 +34,7 @@ class MenuPages():
         
         
         menu_len = len(menu)
-        max_page = math.ceil(menu_len // 6)
+        max_page = math.ceil(menu_len / 6)
         min_page = 1
         right_border = 6
         left_border = 0
@@ -46,7 +46,7 @@ class MenuPages():
             left_border += 6
                 
         
-        print(menu_page[page-1])
+        
         menu_buttons_generated = list()
         for i, v in enumerate(menu_page[page-1]):
             print()

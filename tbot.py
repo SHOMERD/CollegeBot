@@ -199,4 +199,22 @@ additional_buttons_data = {'Stud':(
                                     (0, '',''),
                                     (0, '','')
                                 ),
-                           'Sotr':(('',''),),'Abitur':(('',''),)}
+                           'Sotr':((1, 'Посмотреть','https://docs.google.com/spreadsheets/d/1FiMov0r4UUDKT6A56NWMImpoUakDC2YDevgaOpJQ7Qc/edit#gid=1514109748'),
+                                   (0, '',''),
+                                   (1, 'Афиша мероприятий','https://docs.google.com/spreadsheets/d/1BD8GIu3mFyJaGab3cUBPxwgwu6J3KseI/edit?usp=drivesdk&ouid=114275661080998669061&rtpof=true&sd=true'),
+                                   (1, 'Перейти на сайт','https://opencollege-nsk.ru/education/'),
+                                   (0, '',''),
+                                   (0, '',''),
+                                   (0, '',''),
+                                   (0, '',''),
+                                   (1, 'Список кураторов и наставников','https://docs.google.com/spreadsheets/d/1b6Lz7k3KT8uDlekmWQZ30HxZ_5jeEll3ERz5uw4bs4M/edit?usp=drivesdk'),
+                                   (0, '',''),
+                                   (1, 'Зайти в  библиотеку','http://www.iprbookshop.ru/'),
+                                   (1,  ('Зайти в  ЭлЖур','https://opencollege-nsk.eljur.ru/authorize'),
+                                        ('Список кураторов','https://docs.google.com/spreadsheets/d/1b6Lz7k3KT8uDlekmWQZ30HxZ_5jeEll3ERz5uw4bs4M/edit?usp=drivesdk')),
+                                   (0, '',''),
+                                   (0, '',''),
+                                   (0, '',''),
+                                   (0, '',''),
+                                   (0, '',''),
+                                   (0, '',''),),'Abitur':(('',''),)}
