@@ -2,7 +2,7 @@
 
 from SectionChooser import SectionChooser
 from studmenpages import Menu
-from tbot import bot, page_names
+from tbot import bot, page_names, additional_buttons_data
 from tbot import current_time
 import telebot
 
@@ -48,15 +48,24 @@ def menu(call):
         print(call.data)    
         menuг.bot_menu_pager(int(call.data[-1]))
     elif 'Stud_' in call.data:
-        names = (page_names.get(call.data[:4]))[0]
-        number = 0
+        identity = call.data[:4]
+        names = (page_names.get(identity))[0]
+        callback_number = 0
+        additional_buttons = additional_buttons_data.get(identity)
+        
         for i in names:
-            number +=1
-            if i == call.data[4:]:
+            if call.data[5:] == i:
+                print('found')
                 break
-        additional_button_bool = [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0]
-        print(number, additional_button_bool[number-1])
-        section = SectionChooser(bot, call, call.data[:4], number, additional_button_bool[number-1])
+            callback_number +=1
+            print('not found, trying again')
+         
+        additional_button_array = additional_buttons[callback_number]
+        additional_button_bool = additional_button_array[0] # [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0]
+        additional_button_data = additional_button_array[1:]
+        print(call.data[5:], callback_number, additional_button_array, additional_button_bool, additional_button_data)
+        section = SectionChooser(bot, call, identity, callback_number, additional_button_data, additional_button_bool)
+        section.section_selector()
     elif 'Sotr_' in call.data:
         pass
     else:

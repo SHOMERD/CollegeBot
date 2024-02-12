@@ -1,24 +1,46 @@
+import math
 import telebot
 from text_parser import get_text
 
 class SectionChooser():
 
-    def __init__(self, bot, call, identity, number, additional_button=False):
+    def __init__(self, bot, call, identity, number, additional_button_data, additional_button=False):
+        # полученные переменные при создании экземпляра класса
         self.bot = bot
-        self.additional_button = additional_button
-        self.text = get_text(number)
         self.call = call
         self.identity = identity
         self.page_numbers = number
+        self.additonal_data = additional_button_data
+        self.additional_bool = additional_button
+        # дополнительные переменные полученные из предыдущих переменных
+        self.back_page = math.ceil(number/6)
+        self.chat_id = call.message.chat.id
+        self.message_id = call.message.message_id
+        self.text = get_text(number, self.identity)
+        self.url = self.additonal_data[1]
+        self.text_url = self.additonal_data[0]
+        
 
-    def section(self, url, text_url):
+    def create_buttons(self):
         next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         menu_buttons_generated = list()
-        if self.additional_button:
-            menu_buttons_generated.append(telebot.types.InlineKeyboardButton('', url=''))
-        menu_buttons_generated.append(telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Stud_page1"))
-        #telebot.types.InlineKeyboardButton('Заказать справку', url="https://opencollege-nsk.ru/live/#extract")
+        if self.additional_bool:
+            menu_buttons_generated.append(telebot.types.InlineKeyboardButton(self.text_url, url=self.url))
+        menu_buttons_generated.append(telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data=f"Stud_page{self.back_page}"))
+        
             
         menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
-        next_menu.add()  
+        for i in menu_buttons_generated:
+
+            next_menu.add(i) 
+         
         return next_menu
+
+    def section_selector(self):
+        
+        self.bot.edit_message_text(
+                                    self.text,
+                                    self.chat_id,
+                                    self.message_id,
+                                    reply_markup=self.create_buttons()
+                                    )
