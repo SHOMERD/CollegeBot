@@ -201,15 +201,15 @@ additional_buttons_data = {'Stud':(
                                     (1, 'Афиша мероприятий','https://docs.google.com/spreadsheets/d/1BD8GIu3mFyJaGab3cUBPxwgwu6J3KseI/edit?usp=drivesdk&ouid=114275661080998669061&rtpof=true&sd=true'),
                                     (1,
                                         ('Узнать подробнее','https://opencollege-nsk.ru/live/extracurricular/?group=creation'),
-                                        ('Вступить в траекторию','https://forms.gle/BLf9EBoycc8EagQx5')),
-
+                                        ('Вступить в траекторию','https://forms.gle/BLf9EBoycc8EagQx5')
+                                        ),
                                     (1, 'Перейти на сайт','https://opencollege-nsk.ru/education/'),
                                     (1, 'Перейти на сайт','https://opencollege-nsk.ru/education/'),
                                     (1, 'Перейти на сайт','https://opencollege-nsk.ru/sveden/education/eduop/'),
                                     (1, 'Зайти в библиотеку','http://www.iprbookshop.ru/'),
                                     (1, 'Зайти в ЭлЖур','https://opencollege-nsk.eljur.ru/authorize'),
                                     (1, 'Зайти в  ЭлЖур','https://opencollege-nsk.eljur.ru/authorize'),
-                                    (1, 'Зайти в  ЭлЖур','https://t-karta.ru/novosibirsk/student'),
+                                    (1, 'Транспортная карта','https://t-karta.ru/novosibirsk/student'),
                                     (1, 'Все сотрудники','https://opencollege-nsk.ru/college/structure/'),
                                     (0, '',''),
                                     (1, 'Подробнее о совете','https://opencollege-nsk.ru/live/association/'),
@@ -218,7 +218,7 @@ additional_buttons_data = {'Stud':(
                                     (1, 'Перейти на сайт','https://opencollege-nsk.ru/live'),
                                     (0, '',''),
                                     (0, '',''),
-                                    (0, '','')
+                                    (0, '',''),
                                     ),
                            'Sotr':(
                                     (1, 'Посмотреть','https://docs.google.com/spreadsheets/d/1FiMov0r4UUDKT6A56NWMImpoUakDC2YDevgaOpJQ7Qc/edit#gid=1514109748'),

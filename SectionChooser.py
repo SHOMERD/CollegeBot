@@ -36,7 +36,7 @@ class SectionChooser():
         menu_buttons_generated = list()
         print(self.number, self.back_page)
         print(1111, self.additional_data, self.text_url, self.url)
-        if self.additional_bool:
+        if self.additional_bool and not isinstance(self.text_url, list) and not isinstance(self.url, list):
             
             menu_buttons_generated.append(telebot.types.InlineKeyboardButton(self.text_url, url=self.url))
         else:
