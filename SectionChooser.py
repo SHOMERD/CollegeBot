@@ -13,14 +13,15 @@ class SectionChooser():
         self.additional_data = additional_button_data
         self.additional_bool = additional_button
         # дополнительные переменные полученные из предыдущих переменных
-        self.back_page = math.ceil(number/6)
-        print(self.back_page, number, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+        self.back_page = math.ceil((number+1)/6)
+        self.number = number
+        #print(self.back_page, number, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
         self.chat_id = call.message.chat.id
         self.message_id = call.message.message_id
         self.text = get_text(number, self.identity)
         self.url = list()
         self.text_url = list()
-        if isinstance(self.additional_data, tuple):
+        if isinstance(self.additional_data, list):
             for i in self.additional_data:
                 print(i)
                 self.url.append(i[1])
@@ -33,12 +34,14 @@ class SectionChooser():
     def create_buttons(self):
         next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         menu_buttons_generated = list()
-        if self.additional_bool and not isinstance(self.url, list) and not isinstance(self.text_url, list):
+        print(self.number, self.back_page)
+        print(1111, self.additional_data, self.text_url, self.url)
+        if self.additional_bool:
             
             menu_buttons_generated.append(telebot.types.InlineKeyboardButton(self.text_url, url=self.url))
         else:
             for text, url in zip(self.text_url, self.url):
-                
+                print(text,url)
                 menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text, url=url))
 
         menu_buttons_generated.append(telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data=f"{self.identity}_page{self.back_page}"))

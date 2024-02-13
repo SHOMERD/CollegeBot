@@ -45,7 +45,7 @@ class Menu():
         right_border = 6
         left_border = 0
         menu_page = []
-        
+        page = self.page
         for i in range(self.page):
             menu_page.append(menu[left_border:right_border])
             right_border += 6
