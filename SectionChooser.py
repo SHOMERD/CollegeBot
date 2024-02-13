@@ -21,10 +21,11 @@ class SectionChooser():
         self.text = get_text(number, self.identity)
         self.url = list()
         self.text_url = list()
-        if isinstance(self.additional_data, list):
+        if isinstance(self.additional_data[0], tuple):
             for i in self.additional_data:
-                print(i)
-                self.url.append(i[1])
+                print(12345,i)
+                self.url.append(i[1]) # ИЗМЕНИТЬ ПРОВЕРКУ НА ТИП ДАННЫХ, ИНАЧЕ ПРИ НЕПРАВИЛЬНО ВВЕДЕНЫХ ДАННЫХ
+                                      # ВСЕ ПОЙДЕТ ПО ПИЗДЕ
                 self.text_url.append(i[0])
         else:
             self.url = self.additional_data[1]
@@ -35,9 +36,9 @@ class SectionChooser():
         next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         menu_buttons_generated = list()
         print(self.number, self.back_page)
-        print(1111, self.additional_data, self.text_url, self.url)
+        print(1111, self.additional_data, self.text_url, self.url, isinstance(self.text_url, list),type(self.text_url), sep = '\n')
         if self.additional_bool and not isinstance(self.text_url, list) and not isinstance(self.url, list):
-            
+            print('huyyyyyyyyy')
             menu_buttons_generated.append(telebot.types.InlineKeyboardButton(self.text_url, url=self.url))
         else:
             for text, url in zip(self.text_url, self.url):

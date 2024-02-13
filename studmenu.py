@@ -859,7 +859,7 @@ YouTube: https://youtube.com/@opencollege54
                   "otsrochka":first_str_2,
                   "rasp zanyat":first_str_3,
                   "rasp zvon":first_str_4,
-                  "message_admin":first_str_5,
+                   
                   "oplata":first_str_6,
                   "dolg_money":first_str_7,
                   "dolg_not_money":first_str_8,
@@ -882,6 +882,7 @@ YouTube: https://youtube.com/@opencollege54
                   "kpp":first_str_25,
                   "sales":first_str_26,
                   "different_q":first_str_27,
+                  "message_admin":first_str_5, # suka
                   "links":first_str_28,
                   }  
         
