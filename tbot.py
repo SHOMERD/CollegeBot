@@ -119,7 +119,7 @@ page_names = {
               'Abitur': (
                             ( # callbacks
                                 'about',
-                                'specials_page1', # Сделать меню в меню!!!!!!!!!!!!!!!!
+                                'specials_menu1', # Сделать меню в меню!!!!!!!!!!!!!!!!
                                 'docum',
                                 'kak_postup',
                                 'cost',
@@ -176,7 +176,7 @@ additional_buttons_data = {'Stud':(
                                     (0, '',''),
                                     (0, '',''),
                                     (1, 'Перейти в Instudy','https://opencollege-nsk.ru/instudy'),
-                                    ('',''),
+                                    (0, '',''),
                                     (1, 'Афиша мероприятий','https://docs.google.com/spreadsheets/d/1BD8GIu3mFyJaGab3cUBPxwgwu6J3KseI/edit?usp=drivesdk&ouid=114275661080998669061&rtpof=true&sd=true'),
                                     (1,
                                         ('Узнать подробнее','https://opencollege-nsk.ru/live/extracurricular/?group=creation'),

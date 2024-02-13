@@ -44,9 +44,13 @@ def menu(call):
     print(call.data)    
     if '_page' in call.data:
         print(1, call.data[:-6])
-        menuг = Menu(bot, call, page_names.get(call.data[:-6]), call.data[:-6])
-        print(call.data)    
-        menuг.bot_menu_pager(int(call.data[-1]))
+        page = int(call.data[-1])
+        identity = call.data[:-6]
+        menuг = Menu(bot, call, page_names.get(identity), identity, page)
+           
+        menuг.bot_menu_pager()
+    elif '_menu' in call.data:
+        pass
     elif 'Stud_' in call.data or 'Sotr_' in call.data or 'Abitur_' in call.data:
         identity = call.data[:4]
         names = (page_names.get(identity))[0]
