@@ -2,7 +2,7 @@
 
 from SectionChooser import SectionChooser
 from studmenpages import Menu
-from tbot import bot, page_names, additional_buttons_data
+from tbot import bot, page_names, additional_buttons_data, recursion_menu
 from tbot import current_time
 import telebot
 
@@ -41,16 +41,20 @@ def menu(call):
         mainmenu.add(button_studRod, button_abitr,button_sotr)
         
         bot.edit_message_text("Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?", call.message.chat.id, call.message.message_id, reply_markup=mainmenu)
-    print(call.data)    
+        
     if '_page' in call.data:
-        print(1, call.data[:-6])
+        
         page = int(call.data[-1])
-        identity = call.data[:-6]
+        identity = ((call.data).split('_'))[0] 
+        
         menuг = Menu(bot, call, page_names.get(identity), identity, page)
-           
         menuг.bot_menu_pager()
-    elif '_menu' in call.data:
-        pass
+    elif '_recmenu' in call.data:
+        page = int(call.data[-1])
+        identity = ((call.data).split('_'))[0] 
+        
+        menuг = Menu(bot, call, recursion_menu.get(identity), identity, page)
+        menuг.bot_menu_pager()
     elif 'Stud_' in call.data or 'Sotr_' in call.data or 'Abitur_' in call.data:
         identity = call.data[:4]
         names = (page_names.get(identity))[0]
@@ -59,11 +63,10 @@ def menu(call):
         
         for i in names:
             if call.data[5:] == i:
-                print('found')
+                
                 break
             callback_number +=1
-            print('not found, trying again')
-         
+            
         additional_button_array = additional_buttons[callback_number]
         additional_button_bool = additional_button_array[0] # [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0]
         additional_button_data = additional_button_array[1:]

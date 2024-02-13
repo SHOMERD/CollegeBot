@@ -518,7 +518,7 @@ priem@opencollege-nsk.ru
             next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
             
             button_1 = telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data="Abitur_page2")
-            button_2 = telebot.types.InlineKeyboardButton('“Перейти на сайт', url="https://opencollege-nsk.ru/education/")
+            button_2 = telebot.types.InlineKeyboardButton('Перейти на сайт', url="https://opencollege-nsk.ru/education/")
             
             back = telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu')
             

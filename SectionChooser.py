@@ -20,8 +20,9 @@ class SectionChooser():
         self.text = get_text(number, self.identity)
         self.url = list()
         self.text_url = list()
-        if type(self.additional_data) == 'tuple':
+        if isinstance(self.additional_data, tuple):
             for i in self.additional_data:
+                print(i)
                 self.url.append(i[1])
                 self.text_url.append(i[0])
         else:
@@ -32,10 +33,12 @@ class SectionChooser():
     def create_buttons(self):
         next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         menu_buttons_generated = list()
-        if self.additional_bool and type(self.url) != 'tuple' and type(self.text_url) != 'tuple':
+        if self.additional_bool and not isinstance(self.url, list) and not isinstance(self.text_url, list):
+            
             menu_buttons_generated.append(telebot.types.InlineKeyboardButton(self.text_url, url=self.url))
         else:
             for text, url in zip(self.text_url, self.url):
+                
                 menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text, url=url))
 
         menu_buttons_generated.append(telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data=f"{self.identity}_page{self.back_page}"))
@@ -47,7 +50,7 @@ class SectionChooser():
             next_menu.add(i) 
          
         return next_menu
-
+        
     def section_selector(self):
         
         self.bot.edit_message_text(
