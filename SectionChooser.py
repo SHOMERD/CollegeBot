@@ -47,8 +47,9 @@ class SectionChooser():
             for text, url in zip(self.text_url, self.url):
                 # print(text,url)
                 menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text, url=url))
-        print(self.tree)
-        call_back_data = f"{self.parent}{self.tree}``{self.back_page}"
+        
+        call_back_data = f"{self.parent}``{self.back_page}" if len(self.tree)==1 else f"{self.parent}{self.tree}``{self.back_page}"
+        print(self.parent,self.section)
         
         #call_back_data = call_back_data if self.parent is self.section else f'{self.parent}``{self.back_page}'
         
