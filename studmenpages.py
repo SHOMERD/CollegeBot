@@ -7,7 +7,7 @@ from tbot import current_time
 
 class Menu():
     
-    def __init__(self, bot, call, pages, section, page, tree, parent):
+    def __init__(self, bot, call, pages, section, page, tree, parent, recursion_menu = None):
         self.bot = bot
         self.call = call
         self.chat_id = call.message.chat.id
@@ -23,6 +23,11 @@ class Menu():
         self.page = page
         self.tree = tree
         self.parent = parent
+        self.recursion_menu = recursion_menu
+        self.recursion_button = False
+        self.personality = {'Stud': 'Студента\Родителя', 
+                            'Sotr':'Сотрудника\Преподавателя', 
+                            'Abitur':'Абитуриента\Родителя абитуриента'}
     def pager(self):
         # print(self.pages[1])
         menu = list()
@@ -31,6 +36,7 @@ class Menu():
             # ВНИМАНИЕ, ЕСЛИ ТЕКСТ КОЛЛБЕКА > 64 БАЙТ ТО ВЫДАСТ ОШИБКУ
             # ЛУЧШЕ ИСПОЛЬЗОВАТЬ АНГЛИЙСКИЕ СИМВОЛЫ, ТАК КАК ОНИ ИСПОЛЬЗУЮТ 1 БАЙТ НА СИМВОЛ
             # В ТО ВРЕМЯ КАК РУССКИЕ ПО 2 БАЙТА НА СИМВОЛ
+            
 
             gggg = f'{self.parent}_{callback}' if self.parent == self.section else f'{self.parent}_{self.section}_{callback}'
             print(gggg, self.parent, self.tree,self.section, 'test')
@@ -58,7 +64,7 @@ class Menu():
         
         menu_buttons_generated = [v for i,v in enumerate(menu_page[self.page-1]) if i <= 5]
         
-        shablon = f'{self.parent}' if self.parent == self.section else f'{self.parent}{self.tree}{self.section}'
+        shablon = f'{self.section}' if self.parent == self.section else f'{self.parent}{self.tree}{self.section}'
         print(shablon)
         if self.page == min_page:
             menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'{shablon}``{self.page + 1}'))    
@@ -80,8 +86,13 @@ class Menu():
 
     def bot_menu_pager(self): 
         
-        personality = {'Stud': 'Студента\Родителя', 'Sotr':'Сотрудника\Преподавателя', 'Abitur':'Абитуриента\Родителя абитуриента'}
-        text = f'Меню для {personality.get(self.parent)}' if personality.get(self.parent) != None else ''
+        if self.personality.get(self.section) != None:
+            self.recursion_button = True
+        
+        if self.recursion_button:
+            text = f'Меню для {self.personality.get(self.parent)}' if self.personality.get(self.parent) != None else ''
+        else:
+            text = ''
         menu = self.pager()
         
         self.bot.edit_message_text(f'{text}\nСтраница номер: {self.number_in_sqare[self.page-1]}',

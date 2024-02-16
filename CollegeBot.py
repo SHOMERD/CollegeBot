@@ -79,7 +79,7 @@ def menu(call):
     if section in page_names.keys():
         print('обычное меню')
 
-        recursed_menu = Menu(bot, call, page_names.get(parent), section, page, tree, parent)
+        recursed_menu = Menu(bot, call, page_names.get(parent), section, page, tree, parent, recursion_menu)
         recursed_menu.bot_menu_pager()
         return
     
