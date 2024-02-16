@@ -7,7 +7,7 @@ from tbot import current_time
 
 class Menu():
     
-    def __init__(self, bot, call, pages, section, page, tree, parent, recursion_menu = None):
+    def __init__(self, bot, call, pages, section, page, tree, parent):
         self.bot = bot
         self.call = call
         self.chat_id = call.message.chat.id
@@ -23,7 +23,7 @@ class Menu():
         self.page = page
         self.tree = tree
         self.parent = parent
-        self.recursion_menu = recursion_menu
+        
         self.recursion_button = False
         self.personality = {'Stud': 'Студента\Родителя', 
                             'Sotr':'Сотрудника\Преподавателя', 
