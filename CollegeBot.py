@@ -2,7 +2,7 @@
 
 
 from SectionChooser import SectionChooser
-from studmenpages import Menu
+from MenuCreator import Menu
 from tbot import bot, page_names, additional_buttons_data, recursion_menu
 from tbot import current_time
 import telebot

@@ -5,6 +5,9 @@ from text_parser import get_text
 class SectionChooser():
 
     def __init__(self, bot, call, parent, section, number, additional_button_data, address_tree, additional_button=False):
+        
+        """"""
+        
         # полученные переменные при создании экземпляра класса
         self.bot = bot
         self.call = call
@@ -18,8 +21,6 @@ class SectionChooser():
         
         # дополнительные переменные полученные из предыдущих переменных
         self.back_page = math.ceil((number+1)/6)
-        
-        
         self.chat_id = call.message.chat.id
         self.message_id = call.message.message_id
         self.text = get_text(number, self.parent)
@@ -35,36 +36,48 @@ class SectionChooser():
             self.url = self.additional_data[1]
             self.text_url = self.additional_data[0]
         
+    def get_menu_buttons(self, menu_buttons_generated):
         
+        """"""
 
-    def create_buttons(self):
-        next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
-        menu_buttons_generated = list()
         if self.additional_bool and not isinstance(self.text_url, list) and not isinstance(self.url, list):
             
             menu_buttons_generated.append(telebot.types.InlineKeyboardButton(self.text_url, url=self.url))
         else:
             for text, url in zip(self.text_url, self.url):
-                # print(text,url)
+                
                 menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text, url=url))
+        return menu_buttons_generated
+
+    def add_buttons(self, menu_buttons_generated, next_menu):
         
-        call_back_data = f"{self.parent}``{self.back_page}" if len(self.tree)==1 else f"{self.parent}{self.tree}``{self.back_page}"
-        print(self.parent,self.section)
+        """"""
         
-        #call_back_data = call_back_data if self.parent is self.section else f'{self.parent}``{self.back_page}'
-        
-        menu_buttons_generated.append(telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data=call_back_data))
-        
-            
-        menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
         for i in menu_buttons_generated:
 
-            next_menu.add(i) 
+            next_menu.add(i)
+        
+    def create_buttons(self):
+        
+        """"""
+
+        next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
+        
+        menu_buttons_generated = self.get_menu_buttons(list())
+        
+        call_back_data = f"{self.parent}``{self.back_page}" if len(self.tree)==1 else f"{self.parent}{self.tree}``{self.back_page}"
+        
+        menu_buttons_generated.append(telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data=call_back_data)) 
+        menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
+        
+        next_menu = self.add_buttons(menu_buttons_generated, next_menu) 
          
         return next_menu
         
     def section_selector(self):
         
+        """"""
+
         self.bot.edit_message_text(
                                     self.text,
                                     self.chat_id,
