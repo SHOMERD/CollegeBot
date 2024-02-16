@@ -25,12 +25,12 @@ page_names = {
                             "afisha",
                             "clubs",
                             "dopObrazov1",
-                            "dopOobrazov2",
+                            "dopObrazov2",
                             "studyPlans",
                             "elibrary",
-                            "message_teacher",
+                            "messageTeacher",
                             "eljur",
-                            "transport_card",
+                            "transportCard",
                             "employee",
                             "psixolog",
                             "selfControl",
@@ -119,13 +119,13 @@ page_names = {
               'Abitur': (
                             ( # callbacks
                                 'about',
-                                'specials_recmenu1', # Сделать меню в меню!!!!!!!!!!!!!!!!
+                                'specials', # Сделать меню в меню!!!!!!!!!!!!!!!!
                                 'docum',
-                                'kak_postup',
+                                'kakPostup',
                                 'cost',
                                 'exams',
-                                'dop_degree',
-                                'clubs_abitur',
+                                'dopDegree',
+                                'clubsAbitur',
                                 'license1',
                                 'partnership',
                                 'affisha',
@@ -153,6 +153,28 @@ page_names = {
                             )
                     )}
 
+#regular_menu = {'specials':(
+#                                (
+#                                '
+#                                ),
+#                                (
+#                                'Дизайн (по отраслям)',
+#                                'Реклама',
+#                                'Информационные системы и программирование',
+#                                'Юриспруденция',
+#                                'Правоохранительная деятельность',
+#                                'Операционная деятельность в логистике',
+#                                'Экономика и бухгалтерский учет',
+#                                'Коммерция',
+#                                'Финансы',
+#                                'Социально-культурная деятельность',
+#                                'Народное художественное творчество',
+#                                'Коррекционная педагогика в нач. образовании',
+#                                'Специальное дошкольное образование',
+#                                )
+#                            )
+#                }
+
 recursion_menu = {'specials':(
                                 (
                                 'spec1',
@@ -167,7 +189,7 @@ recursion_menu = {'specials':(
                                 'spec10',
                                 'spec11',
                                 'spec12',
-                                'spec13',
+                                'spec13'
                                 ),
                                 (
                                 'Дизайн (по отраслям)',
@@ -182,7 +204,7 @@ recursion_menu = {'specials':(
                                 'Социально-культурная деятельность',
                                 'Народное художественное творчество',
                                 'Коррекционная педагогика в нач. образовании',
-                                'Специальное дошкольное образование',
+                                'Специальное дошкольное образование'
                                 )
                             )
                 }
@@ -261,7 +283,7 @@ additional_buttons_data = {'Stud':(
                                     (0, '',''),
                                     (0, '',''),
                                     ),
-                           'special':(
+                           'specials':(
                                     (1, 
                                         ('На сайт','https://opencollege-nsk.ru/speciality/'),
                                         ('Видео про Дизайн','https://youtu.be/_1DTn-nMuAU')),
