@@ -41,19 +41,20 @@ def get_tree(tree, call_data):
         tree = tree + i
     return tree
 
-def set_recursive_menu(section, call, page, tree, parent_recursive):
+def set_recursive_menu(bot, section, call, page, tree, parent_recursive):
         
     print('рекурсивное меню')
+    
     recursed_menu = Menu(bot, call, recursion_menu.get(section), section, page, tree, parent_recursive)
     recursed_menu.bot_menu_pager()
 
-def set_regular_menu(section, call, page, tree, parent):
+def set_regular_menu(bot, section, call, page, tree, parent):
     print('обычное меню')
 
     recursed_menu = Menu(bot, call, page_names.get(parent), section, page, tree, parent)
     recursed_menu.bot_menu_pager()
 
-def recursive_buttons(bot,call, parent_recursive):
+def recursive_buttons(bot, section, call, tree, parent_recursive, parent):
     callbacks = (recursion_menu.get(parent_recursive))[0]
             
     if section in callbacks:
@@ -63,7 +64,7 @@ def recursive_buttons(bot,call, parent_recursive):
         names = recursion_menu.get(parent_recursive) 
         callback_number = 0   
         additional_buttons = additional_buttons_data.get(parent_recursive)
-        print('содержание кнопок---', call.data, section, sep='\n')
+        print('содержание кнопок рекурсивных---', section, sep='\n')
         for i in names[0]:
             print(i, callback_name)
             if callback_name == i:
@@ -72,11 +73,12 @@ def recursive_buttons(bot,call, parent_recursive):
             callback_number +=1
             
         additional_button_array = additional_buttons[callback_number]
-        additional_button_bool = additional_button_array[0] # [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0]
+        additional_button_bool = additional_button_array[0] 
         additional_button_data = additional_button_array[1:]
-        section = SectionChooser(bot, call, parent_recursive, section, callback_number, additional_button_data, tree, additional_button_bool)
+        section = SectionChooser(bot, call, parent, section, callback_number, additional_button_data, tree, parent_recursive, additional_button_bool)
         section.section_selector()
-def set_buttons(parent, call, tree):
+
+def set_buttons(bot, section, call, tree, parent):
     callbacks = (page_names.get(parent))[0]
 
     if section in callbacks:
@@ -94,7 +96,7 @@ def set_buttons(parent, call, tree):
             callback_number +=1
             
         additional_button_array = additional_buttons[callback_number]
-        additional_button_bool = additional_button_array[0] # [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0]
+        additional_button_bool = additional_button_array[0] 
         additional_button_data = additional_button_array[1:]
         section = SectionChooser(bot, call, parent, section, callback_number, additional_button_data, tree, additional_button_bool)
         section.section_selector()
@@ -108,36 +110,36 @@ def menu(call):
         return
     
     call_data=call.data
-    
+    print(call_data)
     call_data = call_data.split('_')
     parsed = (call_data[-1]).split('``')
     section, page = parsed if len(parsed)>1 else [parsed[0],1]
     page = int(page)
-    tree = get_tree('_', call_data)
+    
     
     parent = call_data.pop(0) if len(call_data) > 1 else section
-
+    tree = get_tree('_', call_data)
     parent_recursive = parent if len(call_data) < 2 else call_data[-2]
     
     if section in recursion_menu.keys():    
-        set_recursive_menu(section, call, page, tree, parent_recursive)
+        set_recursive_menu(bot, section, call, page, tree, parent_recursive)
         return
     
-    if section in page_names.keys():
-        set_regular_menu(section, call, page, tree, parent)
+    elif section in page_names.keys():
+        set_regular_menu(bot, section, call, page, tree, parent)
         return
 
-    if recursion_menu.get(parent_recursive) is not None:
+    elif recursion_menu.get(parent_recursive) is not None:
         if section in recursion_menu.get(parent_recursive)[0]:
-            recursive_buttons(section, page, tree)
+            recursive_buttons(bot, section, call, tree, parent_recursive, parent)
             return
     
             
     
-    if page_names.get(parent) is not None:
+    elif page_names.get(parent) != None:
         if section in (page_names.get(parent))[0]:
             print('d')
-            set_buttons(section, page, tree)
+            set_buttons(bot, section, call, tree, parent)
             
             return
 

@@ -4,7 +4,7 @@ from text_parser import get_text
 
 class SectionChooser():
 
-    def __init__(self, bot, call, parent, section, number, additional_button_data, address_tree, additional_button=False):
+    def __init__(self, bot, call, parent, section, number, additional_button_data, address_tree, recursive_parent=None, additional_button=False):
         
         """"""
         
@@ -16,6 +16,7 @@ class SectionChooser():
         self.additional_bool = additional_button
         self.tree = address_tree
         self.parent = parent
+        self.recursive_parent = recursive_parent
         self.section = section
         self.number = number
         
@@ -23,7 +24,7 @@ class SectionChooser():
         self.back_page = math.ceil((number+1)/6)
         self.chat_id = call.message.chat.id
         self.message_id = call.message.message_id
-        self.text = get_text(number, self.parent)
+        self.text = get_text(number, self.parent if self.recursive_parent == None else self.recursive_parent)
         self.url = list()
         self.text_url = list()
         if isinstance(self.additional_data[0], tuple):
@@ -56,6 +57,7 @@ class SectionChooser():
         for i in menu_buttons_generated:
 
             next_menu.add(i)
+        return next_menu
         
     def create_buttons(self):
         
@@ -64,14 +66,14 @@ class SectionChooser():
         next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
         
         menu_buttons_generated = self.get_menu_buttons(list())
-        
-        call_back_data = f"{self.parent}``{self.back_page}" if len(self.tree)==1 else f"{self.parent}{self.tree}``{self.back_page}"
+        coun = (self.tree).count('')
+        call_back_data = f"{self.parent}``{self.back_page}" if self.parent == self.tree[1:] else f"{self.parent}{self.tree}``{self.back_page}"
         
         menu_buttons_generated.append(telebot.types.InlineKeyboardButton('🔙 Назад 🔙', callback_data=call_back_data)) 
         menu_buttons_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
         
         next_menu = self.add_buttons(menu_buttons_generated, next_menu) 
-         
+        
         return next_menu
         
     def section_selector(self):
