@@ -107,6 +107,8 @@ def set_buttons(bot, section, call, tree, parent) -> NoReturn:
         section.section_selector()
         return
 
+
+
 @bot.callback_query_handler(func=lambda call: True)
 def menu(call):
     

@@ -1,5 +1,6 @@
 # coding=utf-8 
 from datetime import datetime, timedelta
+import json
 import telebot
 
 bot = telebot.TeleBot("6269939624:AAGAv4FO_FD5JvfRlSSWPiednZXPesUbZhU")
@@ -280,3 +281,4 @@ additional_buttons_data = {'Stud':(
                                     (1, 'На сайт','https://opencollege-nsk.ru/speciality/'),
                                     (1, 'На сайт','https://opencollege-nsk.ru/speciality/')
                                       )}
+
