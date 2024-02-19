@@ -65,8 +65,33 @@ class Menu():
             # print(gggg, type(gggg), len(gggg.encode("utf8")), len(self.identity.encode("utf8")), len(callback.encode("utf8")))
             menu.append(telebot.types.InlineKeyboardButton(text, callback_data=gggg))
         return menu
-    
-    def create_pages(self, min_page: int, max_page: int, menu_page: list) -> list:
+
+    def control_buttons(self,menu_buttons_pages_generated: list, min_page: int, max_page: int, shablon: str) -> tuple:
+        
+        """
+        Функция добавляет кнопки управления страницами и кнопку возврата в глав меню
+        """
+
+        left = telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'{shablon}``{self.page - 1}')
+        right = telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'{shablon}``{self.page + 1}')
+        begining = telebot.types.InlineKeyboardButton(text='🔄 В начало 🔄', callback_data=f'{shablon}``{min_page}')
+
+        if self.page == min_page:
+
+            menu_buttons_pages_generated.append(right)    
+        elif self.page == max_page:
+            
+            menu_buttons_pages_generated.append(left)
+            menu_buttons_pages_generated.append(begining)
+        else:
+            menu_buttons_pages_generated.append(right)
+            menu_buttons_pages_generated.append(left)
+            
+                    
+        menu_buttons_pages_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
+        return menu_buttons_pages_generated
+
+    def create_pages(self, min_page: int, max_page: int, menu_page: list) -> tuple:
         
         """
         Функция генерирует, именно генерирует, 6 кнопок для нужной страницы, и дополнительные кнопки меню 
@@ -75,23 +100,11 @@ class Menu():
         Возвращает список кнопок для страницы с определенным номером, который определяется благодаря числу элементов.
         Так что страницы по сути генерируются сами, просто добавьте больше кнопок в список и страницы сами появятся
         """
-
-        menu_buttons_pages_generated = [v for i,v in enumerate(menu_page[self.page-1]) if i <= 5]
-        
         shablon = f'{self.section}' if self.parent == self.section else f'{self.parent}{self.tree}{self.section}'
         
-        if self.page == min_page:
-            menu_buttons_pages_generated.append(telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'{shablon}``{self.page + 1}'))    
-        elif self.page == max_page:
+        menu_buttons_pages_generated: list = [v for i,v in enumerate(menu_page[self.page-1]) if i <= 5]
+        menu_buttons_pages_generated: tuple = self.control_buttons(menu_buttons_pages_generated, min_page, max_page, shablon)
             
-            menu_buttons_pages_generated.append(telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'{shablon}``{self.page - 1}'))
-            menu_buttons_pages_generated.append(telebot.types.InlineKeyboardButton(text='🔄 В начало 🔄', callback_data=f'{shablon}``{min_page}'))
-        else:
-            menu_buttons_pages_generated.append(telebot.types.InlineKeyboardButton(text='➡️ Следующая страница ➡️', callback_data=f'{shablon}``{self.page + 1}'))
-            menu_buttons_pages_generated.append(telebot.types.InlineKeyboardButton(text='⬅️ Предыдущая страница ⬅️', callback_data=f'{shablon}``{self.page - 1}'))
-            
-                    
-        menu_buttons_pages_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
         return menu_buttons_pages_generated
 
     def add_buttons_to_keyboard(self, menu_buttons_pages_generated: list, next_menu: Any):
@@ -147,6 +160,10 @@ class Menu():
 
     def bot_menu_pager(self) -> NoReturn: 
         
+        """
+        Функция создает страницу из кнопок в сообщении
+        """
+
         text = self.choose_description()
 
         menu = self.pager()

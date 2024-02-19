@@ -139,7 +139,6 @@ def menu(call):
             
     elif page_names.get(parent) != None:
         if section in (page_names.get(parent))[0]:
-            print('d')
             set_buttons(bot, section, call, tree, parent)
             
             

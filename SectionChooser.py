@@ -42,7 +42,9 @@ class SectionChooser():
         
     def get_menu_buttons(self, menu_buttons_generated: list) -> list:
         
-        """"""
+        """
+        Функция добавляет дополнительные кнопки для раздела если они имеются, все кнопки - кнопки-ссылки
+        """
 
         if self.additional_bool and not isinstance(self.text_url, list) and not isinstance(self.url, list):
             
@@ -55,7 +57,9 @@ class SectionChooser():
 
     def add_buttons(self, menu_buttons_generated: list, next_menu: Any) -> Any:
         
-        """"""
+        """
+        Функция добавляет созданные ранее кнопки, хранящиеся в листе, в экземпляр клавиатуры
+        """
         
         for i in menu_buttons_generated:
 
@@ -64,7 +68,9 @@ class SectionChooser():
         
     def create_buttons(self) -> Any:
         
-        """"""
+        """
+        Функция создает клавиатуру с кнопками управления страницами, возвращает объект клавиатуры
+        """
 
         next_menu: Any = telebot.types.InlineKeyboardMarkup(row_width=1)
         
@@ -81,7 +87,10 @@ class SectionChooser():
         
     def section_selector(self):
         
-        """"""
+        """
+        Редактирует сообщение, тем самым "открывает" раздел, меняет текст сообщения, добавляет кнопки
+        возврата в прошлое меню и глав меню
+        """
 
         self.bot.edit_message_text(
                                     self.text,
