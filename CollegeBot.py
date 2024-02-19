@@ -1,16 +1,17 @@
 # coding=utf-8 
 
-
+import telebot
+from typing import NoReturn
 from SectionChooser import SectionChooser
 from MenuCreator import Menu
 from tbot import bot, page_names, additional_buttons_data, recursion_menu
 from tbot import current_time
-import telebot
+
 
 
 
 @bot.message_handler(commands=['start'])
-def start(message):
+def start(message) -> NoReturn:
     
     #bot.send_message(-1001822755040, '{} \n<{}> <{}> <{}> <{}>\n\n Стартанул Бота (написал /start)'.format(current_time(), message.from_user.id, message.from_user.first_name, message.from_user.last_name, message.from_user.username))
     
@@ -23,8 +24,9 @@ def start(message):
     markup.add(button_studRod, button_abitr, button_sotr, )
     
     bot.send_message(message.chat.id, 'Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?', reply_markup = markup)
+    return
     
-def mainmenu(call):
+def mainmenu(call) -> NoReturn:
     mainmenu = telebot.types.InlineKeyboardMarkup(row_width = 1)
         
     button_studRod = telebot.types.InlineKeyboardButton(text='Студент\Родитель', callback_data='Stud``1')
@@ -36,215 +38,113 @@ def mainmenu(call):
     bot.edit_message_text("Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?", call.message.chat.id, call.message.message_id, reply_markup=mainmenu)
     return
 
-def get_tree(tree, call_data):
+def get_tree(tree, call_data) -> str:
     for i in call_data[:-1]:
         tree = tree + i
     return tree
 
-def set_recursive_menu(bot, section, call, page, tree, parent_recursive):
+def set_recursive_menu(bot, section, call, page, tree, parent_recursive) -> NoReturn:
         
     print('рекурсивное меню')
     
     recursed_menu = Menu(bot, call, recursion_menu.get(section), section, page, tree, parent_recursive)
     recursed_menu.bot_menu_pager()
+    
 
-def set_regular_menu(bot, section, call, page, tree, parent):
+def set_regular_menu(bot, section, call, page, tree, parent) -> NoReturn:
     print('обычное меню')
 
     recursed_menu = Menu(bot, call, page_names.get(parent), section, page, tree, parent)
     recursed_menu.bot_menu_pager()
+    
 
-def recursive_buttons(bot, section, call, tree, parent_recursive, parent):
-    callbacks = (recursion_menu.get(parent_recursive))[0]
-            
+def recursive_buttons(bot, section, call, tree, parent_recursive, parent) -> NoReturn:
+    callbacks: tuple = (recursion_menu.get(parent_recursive))[0]
+    
     if section in callbacks:
-        callback_index = callbacks.index(section)
-        callback_name = callbacks[callback_index]
+        callback_index: int = callbacks.index(section)
+        callback_name: str = callbacks[callback_index]
             
-        names = recursion_menu.get(parent_recursive) 
-        callback_number = 0   
-        additional_buttons = additional_buttons_data.get(parent_recursive)
+        
+        callback_number: int = 0   
+        additional_buttons: tuple = additional_buttons_data.get(parent_recursive)
         print('содержание кнопок рекурсивных---', section, sep='\n')
-        for i in names[0]:
+        for i in callbacks:
             print(i, callback_name)
             if callback_name == i:
                 
                 break
             callback_number +=1
             
-        additional_button_array = additional_buttons[callback_number]
-        additional_button_bool = additional_button_array[0] 
-        additional_button_data = additional_button_array[1:]
+        additional_button_array: tuple = additional_buttons[callback_number]
+        additional_button_bool: bool = additional_button_array[0] 
+        additional_button_data = additional_button_array[1:] # tuples or string
         section = SectionChooser(bot, call, parent, section, callback_number, additional_button_data, tree, parent_recursive, additional_button_bool)
         section.section_selector()
+        return
 
-def set_buttons(bot, section, call, tree, parent):
-    callbacks = (page_names.get(parent))[0]
-
+def set_buttons(bot, section, call, tree, parent) -> NoReturn:
+    callbacks: tuple = (page_names.get(parent))[0]
+    
+    
     if section in callbacks:
-        callback_index = callbacks.index(section)
-        callback_name = callbacks[callback_index]
-        names = (page_names.get(parent)) 
-        callback_number = 0   
-        additional_buttons = additional_buttons_data.get(parent)
+        
+        callback_index: int = callbacks.index(section)
+        callback_name: str = callbacks[callback_index]
+        
+        callback_number: int = 0   
+        additional_buttons: tuple = additional_buttons_data.get(parent)
         print('содержание кнопок---', call.data, section, sep='\n')
-        for i in names[0]:
+        for i in callbacks:
             print(i, callback_name)
             if callback_name == i:
                 
                 break
             callback_number +=1
             
-        additional_button_array = additional_buttons[callback_number]
-        additional_button_bool = additional_button_array[0] 
-        additional_button_data = additional_button_array[1:]
-        section = SectionChooser(bot, call, parent, section, callback_number, additional_button_data, tree, additional_button_bool)
+        additional_button_array: tuple = additional_buttons[callback_number]
+        additional_button_bool: bool = additional_button_array[0] 
+        additional_button_data = additional_button_array[1:] # tuples or string
+        section = SectionChooser(bot, call, parent, section, callback_number, additional_button_data, tree, additional_button=additional_button_bool)
         section.section_selector()
+        return
 
 @bot.callback_query_handler(func=lambda call: True)
 def menu(call):
     
     if call.data == 'mainmenu': # Главное меню
-        
         mainmenu(call)
-        return
+    print(type(call.message.chat.id), type(call.message.message_id))    
     
-    call_data=call.data
-    print(call_data)
-    call_data = call_data.split('_')
-    parsed = (call_data[-1]).split('``')
-    section, page = parsed if len(parsed)>1 else [parsed[0],1]
-    page = int(page)
+    call_data: str = call.data
+    call_data: list = call_data.split('_')
+    parsed: list = (call_data[-1]).split('``')
+    section, page = parsed if len(parsed)>1 else [parsed[0],'1'] # все str
+    page: int = int(page)
+    print(call.data)
     
-    
-    parent = call_data.pop(0) if len(call_data) > 1 else section
-    tree = get_tree('_', call_data)
-    parent_recursive = parent if len(call_data) < 2 else call_data[-2]
+    parent: str = call_data.pop(0) if len(call_data) > 1 else section
+    tree: str = get_tree('_', call_data)
+    parent_recursive: str = parent if len(call_data) < 2 else call_data[-2]
     
     if section in recursion_menu.keys():    
         set_recursive_menu(bot, section, call, page, tree, parent_recursive)
-        return
-    
+        
     elif section in page_names.keys():
         set_regular_menu(bot, section, call, page, tree, parent)
-        return
-
+        
     elif recursion_menu.get(parent_recursive) is not None:
         if section in recursion_menu.get(parent_recursive)[0]:
             recursive_buttons(bot, section, call, tree, parent_recursive, parent)
-            return
-    
             
-    
     elif page_names.get(parent) != None:
         if section in (page_names.get(parent))[0]:
             print('d')
             set_buttons(bot, section, call, tree, parent)
             
-            return
+            
 
     
-
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    #if '_recmenu' in call.data:
-        
-    #    page = int(call.data[-1])
-    #    identity = ((call.data).split('_'))[1] 
-    #    print('меню рекурсии---', call.data, identity, sep='\n')
-    #    menuг = Menu(bot, call, recursion_menu.get(identity), identity, page)
-    #    menuг.bot_menu_pager()
-    #    return    
-    #elif '_page' in call.data:
-    #    print('страницы меню---', call.data, sep='\n')
-    #    page = int(call.data[-1])
-    #    identity = ((call.data).split('_'))[0] 
-        
-    #    menuг = Menu(bot, call, page_names.get(identity), identity, page)
-    #    menuг.bot_menu_pager()
-    #    return
-    
-    
-    #for recursion in recursion_menu.keys():
-    #    if recursion in call.data:
-            
-    #        identity = ((call.data).split('_'))[0] #if menu in call.data else ((call.data).split('_'))[1]
-    #        callback_name = ((call.data).split('_'))[1]
-    #        names = (recursion_menu.get(identity))[0]
-    #        callback_number = 0   
-    #        additional_buttons = additional_buttons_data.get(identity)
-    #        print('содержание кнопок рекурсии---', call.data, identity, sep='\n')
-    #        for i in names:
-    #            print(i, callback_name)
-    #            if callback_name == i:
-                
-    #                break
-    #            callback_number +=1
-            
-    #        additional_button_array = additional_buttons[callback_number]
-    #        additional_button_bool = additional_button_array[0] # [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0]
-    #        additional_button_data = additional_button_array[1:]
-    #        recursion = 1 
-    #        #print(recursion, callback_name, callback_number, additional_button_array, additional_button_bool, additional_button_data)
-    #        section = SectionChooser(bot, call, identity, callback_number, additional_button_data, additional_button_bool, 1)
-    #        section.section_selector()
-    #        return
-    
-    #for menu in page_names.keys():    
-    #    print(menu)
-    #    if menu in call.data:
-            
-    #        identity = ((call.data).split('_'))[0] #if menu in call.data else ((call.data).split('_'))[1]
-    #        callback_name = ((call.data).split('_'))[1]
-    #        names = (page_names.get(identity))[0] 
-    #        callback_number = 0   
-    #        additional_buttons = additional_buttons_data.get(identity)
-    #        print('содержание кнопок---', call.data, identity, sep='\n')
-    #        for i in names:
-    #            print(i, callback_name)
-    #            if callback_name == i:
-                
-    #                break
-    #            callback_number +=1
-            
-    #        additional_button_array = additional_buttons[callback_number]
-    #        additional_button_bool = additional_button_array[0] # [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0]
-    #        additional_button_data = additional_button_array[1:]
-    #        recursion = 0
-    #        #print(recursion, callback_name, callback_number, additional_button_array, additional_button_bool, additional_button_data)
-    #        section = SectionChooser(bot, call, identity, callback_number, additional_button_data, additional_button_bool)
-    #        section.section_selector()
-    #        return
-        
     
 
 

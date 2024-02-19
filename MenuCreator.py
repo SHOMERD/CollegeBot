@@ -1,6 +1,7 @@
 # coding=utf-8 
 
 import math
+from typing import Any, NoReturn
 import telebot
 from tbot import current_time
 
@@ -8,28 +9,27 @@ from tbot import current_time
 class Menu():
     
     def __init__(self, bot, call, pages, section, page, tree, parent):
-        self.bot = bot
-        self.call = call
-        self.chat_id = call.message.chat.id
-        self.message_id = call.message.message_id
-        self.section = section
-        self.pages = pages
-        self.number_in_sqare = ('1️⃣', '2️⃣', '3️⃣', '4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟')
-        self.buttons_text = self.pages[1]
-        self.buttons_callback = self.pages[0]
-        self.generated_buttons = []
-        self.next_menu = telebot.types.InlineKeyboardMarkup(row_width=1)
-        self.bot = bot
-        self.page = page
-        self.tree = tree
-        self.parent = parent
+        self.bot: Any = bot
+        self.call: Any = call
+        self.chat_id: int = call.message.chat.id
+        self.message_id: int = call.message.message_id
+        self.section: str = section
+        self.pages: tuple = pages
+        self.number_in_sqare: tuple = ('1️⃣', '2️⃣', '3️⃣', '4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟')
+        self.buttons_text: tuple = self.pages[1]
+        self.buttons_callback: tuple = self.pages[0]
+        self.generated_buttons: list = list()
+        self.next_menu: Any = telebot.types.InlineKeyboardMarkup(row_width=1)
+        self.page: int = page
+        self.tree: str = tree
+        self.parent: str = parent
         
-        self.recursion_button = False
-        self.personality = {'Stud': 'Студента\Родителя', 
+        self.recursion_button: bool = False
+        self.personality: dict = {'Stud': 'Студента\Родителя', 
                             'Sotr':'Сотрудника\Преподавателя', 
                             'Abitur':'Абитуриента\Родителя абитуриента'}
     
-    def sliding_window_listing(self, menu_page, menu, right_border = 6, left_border = 0):
+    def sliding_window_listing(self, menu_page: list, menu: list, right_border: int = 6, left_border: int = 0) -> list:
         
         """
         Функция которая скользит по списку с помощью так называемого способа "Скользящего окна", для 
@@ -42,7 +42,7 @@ class Menu():
             left_border += 6
         return menu_page
     
-    def create_buttons(self, menu):
+    def create_buttons(self, menu: list) -> list:
 
         """
         Функция итерирует список с текстами для кнопок и список с их коллбеками, после создает экземпляр кнопки
@@ -66,7 +66,7 @@ class Menu():
             menu.append(telebot.types.InlineKeyboardButton(text, callback_data=gggg))
         return menu
     
-    def create_pages(self, min_page, max_page, menu_page):
+    def create_pages(self, min_page: int, max_page: int, menu_page: list) -> list:
         
         """
         Функция генерирует, именно генерирует, 6 кнопок для нужной страницы, и дополнительные кнопки меню 
@@ -94,18 +94,19 @@ class Menu():
         menu_buttons_pages_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
         return menu_buttons_pages_generated
 
-    def add_buttons_to_keyboard(self, menu_buttons_pages_generated):
+    def add_buttons_to_keyboard(self, menu_buttons_pages_generated: list, next_menu: Any):
 
         """
         Функция добавляет кнопки созданной страницы в клавиатуру
 
         """
-
+        
         for i in menu_buttons_pages_generated:
             
-            self.next_menu.add(i)
+            next_menu.add(i)
+        return next_menu
         
-    def choose_description(self):
+    def choose_description(self) -> str:
 
         """
         Функция решает какую подпись выбрать для заголовка страницы
@@ -122,7 +123,7 @@ class Menu():
             text = ''
         return text
 
-    def pager(self):
+    def pager(self) -> Any:
         
         """
         Функция которая создает "страницу" кнопок, выясняет максимальную возможную страницу, минимально возможную и тд.
@@ -140,11 +141,11 @@ class Menu():
 
         menu_buttons_pages_generated = self.create_pages(min_page, max_page, menu_page)
 
-        self.add_buttons_to_keyboard(menu_buttons_pages_generated)
+        next_menu = self.add_buttons_to_keyboard(menu_buttons_pages_generated, self.next_menu)
         
-        return self.next_menu        
+        return next_menu        
 
-    def bot_menu_pager(self): 
+    def bot_menu_pager(self) -> NoReturn: 
         
         text = self.choose_description()
 
