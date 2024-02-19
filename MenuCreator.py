@@ -36,7 +36,7 @@ class Menu():
         более подробной информации используйте гугл, задать границы можно при передаче аргументов
         """
 
-        for i in range(self.page):
+        for _ in range(self.page):
             menu_page.append(menu[left_border:right_border])
             right_border += 6
             left_border += 6

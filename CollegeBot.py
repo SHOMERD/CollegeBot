@@ -45,14 +45,14 @@ def get_tree(tree, call_data) -> str:
 
 def set_recursive_menu(bot, section, call, page, tree, parent_recursive) -> NoReturn:
         
-    print('рекурсивное меню')
+    
     
     recursed_menu = Menu(bot, call, recursion_menu.get(section), section, page, tree, parent_recursive)
     recursed_menu.bot_menu_pager()
     
 
 def set_regular_menu(bot, section, call, page, tree, parent) -> NoReturn:
-    print('обычное меню')
+    
 
     recursed_menu = Menu(bot, call, page_names.get(parent), section, page, tree, parent)
     recursed_menu.bot_menu_pager()
@@ -68,9 +68,9 @@ def recursive_buttons(bot, section, call, tree, parent_recursive, parent) -> NoR
         
         callback_number: int = 0   
         additional_buttons: tuple = additional_buttons_data.get(parent_recursive)
-        print('содержание кнопок рекурсивных---', section, sep='\n')
+        
         for i in callbacks:
-            print(i, callback_name)
+            
             if callback_name == i:
                 
                 break
@@ -94,9 +94,7 @@ def set_buttons(bot, section, call, tree, parent) -> NoReturn:
         
         callback_number: int = 0   
         additional_buttons: tuple = additional_buttons_data.get(parent)
-        print('содержание кнопок---', call.data, section, sep='\n')
         for i in callbacks:
-            print(i, callback_name)
             if callback_name == i:
                 
                 break
@@ -114,14 +112,14 @@ def menu(call):
     
     if call.data == 'mainmenu': # Главное меню
         mainmenu(call)
-    print(type(call.message.chat.id), type(call.message.message_id))    
+       
     
     call_data: str = call.data
     call_data: list = call_data.split('_')
     parsed: list = (call_data[-1]).split('``')
     section, page = parsed if len(parsed)>1 else [parsed[0],'1'] # все str
     page: int = int(page)
-    print(call.data)
+    
     
     parent: str = call_data.pop(0) if len(call_data) > 1 else section
     tree: str = get_tree('_', call_data)
