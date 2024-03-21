@@ -1,9 +1,13 @@
 # coding=utf-8 
-from datetime import datetime, timedelta
+import os
 import json
 import telebot
+from datetime import datetime, timedelta
+from dotenv import load_dotenv
 
-bot = telebot.TeleBot("")
+load_dotenv()
+
+bot = telebot.TeleBot(os.getenv("TOKEN"))
 
 def current_time():
     now = datetime.now() + timedelta(hours=4)
