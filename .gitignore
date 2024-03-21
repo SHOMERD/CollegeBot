@@ -5,6 +5,10 @@
 .env
 
 ### Python ###
+
+# venv
+Tbot/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
