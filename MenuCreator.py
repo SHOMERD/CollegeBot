@@ -8,26 +8,25 @@ from tbot import current_time
 
 class Menu():
     
-    def __init__(self, bot, call, pages, section, page, tree, parent):
+    def __init__(self, bot, call, info, wanted_page):
         self.bot: Any = bot
         self.call: Any = call
         self.chat_id: int = call.message.chat.id
         self.message_id: int = call.message.message_id
-        self.section: str = section
-        self.pages: tuple = pages
+        
         self.number_in_sqare: tuple = ('1️⃣', '2️⃣', '3️⃣', '4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟')
-        self.buttons_text: tuple = self.pages[1]
-        self.buttons_callback: tuple = self.pages[0]
+        
+        
         self.generated_buttons: list = list()
         self.next_menu: Any = telebot.types.InlineKeyboardMarkup(row_width=1)
-        self.page: int = page
-        self.tree: str = tree
-        self.parent: str = parent
+        self.page: int = int(wanted_page)
         
-        self.recursion_button: bool = False
-        self.personality: dict = {'Stud': 'Студента\Родителя', 
-                            'Sotr':'Сотрудника\Преподавателя', 
-                            'Abitur':'Абитуриента\Родителя абитуриента'}
+        self.info = info
+        self.parent = info.parent
+        self.callbacks = info.callbacks
+        self.names = info.names
+        
+        
     
     def sliding_window_listing(self, menu_page: list, menu: list, right_border: int = 6, left_border: int = 0) -> list:
         
@@ -51,19 +50,8 @@ class Menu():
         Возвращает  список кнопок
         """
 
-        for text, callback in zip(self.buttons_text, self.buttons_callback):
-
-            # ВНИМАНИЕ, ЕСЛИ ТЕКСТ КОЛЛБЕКА > 64 БАЙТ ТО ВЫДАСТ ОШИБКУ
-            # ЛУЧШЕ ИСПОЛЬЗОВАТЬ АНГЛИЙСКИЕ СИМВОЛЫ, ТАК КАК ОНИ ИСПОЛЬЗУЮТ 1 БАЙТ НА СИМВОЛ
-            # В ТО ВРЕМЯ КАК РУССКИЕ ПО 2 БАЙТА НА СИМВОЛ
-            
-
-            gggg = f'{self.parent}_{callback}' if self.parent == self.section else f'{self.parent}_{self.section}_{callback}'
-            
-            
-            # расскоментируй строку с принтом если надо проверить коллбек, тип данных коллбека, вес коллбека
-            # print(gggg, type(gggg), len(gggg.encode("utf8")), len(self.identity.encode("utf8")), len(callback.encode("utf8")))
-            menu.append(telebot.types.InlineKeyboardButton(text, callback_data=gggg))
+        for text, callback in zip(self.names, self.callbacks):
+            menu.append(telebot.types.InlineKeyboardButton(text, callback_data=callback+'``1'))
         return menu
 
     def control_buttons(self,menu_buttons_pages_generated: list, min_page: int, max_page: int, shablon: str) -> tuple:
@@ -88,7 +76,7 @@ class Menu():
             menu_buttons_pages_generated.append(left)
             
                     
-        menu_buttons_pages_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='mainmenu'))
+        menu_buttons_pages_generated.append(telebot.types.InlineKeyboardButton(text='📱 В меню 📱', callback_data='aaa``1'))
         return menu_buttons_pages_generated
 
     def create_pages(self, min_page: int, max_page: int, menu_page: list) -> tuple:
@@ -100,7 +88,7 @@ class Menu():
         Возвращает список кнопок для страницы с определенным номером, который определяется благодаря числу элементов.
         Так что страницы по сути генерируются сами, просто добавьте больше кнопок в список и страницы сами появятся
         """
-        shablon = f'{self.section}' if self.parent == self.section else f'{self.parent}{self.tree}{self.section}'
+        shablon = self.info.callback
         
         menu_buttons_pages_generated: list = [v for i,v in enumerate(menu_page[self.page-1]) if i <= 5]
         menu_buttons_pages_generated: tuple = self.control_buttons(menu_buttons_pages_generated, min_page, max_page, shablon)
@@ -119,22 +107,6 @@ class Menu():
             next_menu.add(i)
         return next_menu
         
-    def choose_description(self) -> str:
-
-        """
-        Функция решает какую подпись выбрать для заголовка страницы
-
-        Возвращает строку
-        """
-
-        if self.personality.get(self.section) != None:
-            self.recursion_button = True
-        
-        if self.recursion_button:
-            text = f'Меню для {self.personality.get(self.parent)}' if self.personality.get(self.parent) != None else ''
-        else:
-            text = ''
-        return text
 
     def pager(self) -> Any:
         
@@ -163,8 +135,9 @@ class Menu():
         """
         Функция создает страницу из кнопок в сообщении
         """
+        
 
-        text = self.choose_description()
+        text = self.info.text
 
         menu = self.pager()
         
@@ -172,5 +145,5 @@ class Menu():
                               self.chat_id,
                               self.message_id,
                               reply_markup=menu)
-
+        
     
