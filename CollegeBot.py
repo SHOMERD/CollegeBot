@@ -7,7 +7,7 @@ from MenuCreator import Menu
 from tbot import bot, page_names, additional_buttons_data, recursion_menu
 from tbot import info
 
-
+#комент
 
 
 @bot.message_handler(commands=['start'])
